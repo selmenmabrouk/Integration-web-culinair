@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'base-front.html.twig' %}
 {% block stylesheets %}
     <!-- Plugins CSS -->
     <link rel="stylesheet" href="{{ asset ('back-office/plugins/css/plugins.css') }}">
@@ -8,10 +8,10 @@
     <link href="{{ asset ('back-office/css/responsiveness.css') }}" rel="stylesheet"><link id="jssDefault" rel="stylesheet" href="{{ asset ('back-office/css/skins/default.css') }}">
 {% endblock %}
 {% block body %}
-    {{ form_start(form) }}
+{{ form_start(form) }}
 
-    <h1 style="text-align:left"> Modifier l'Evenement </h1>
-    <br><br>
+<h1 style="text-align:left"> Ajouter un evenement </h1>
+    <br><br><br>
     <div class="row">
         <div class="col-xs-8">
             {{ form_errors(form.nom) }}
@@ -37,6 +37,12 @@
             {{ form_label(form.Prix,"Prix :") }}
             {{ form_widget(form.Prix , { 'attr': {'class': 'form-control'} })  }}
         </div>
+        <div class="col-xs-8">
+            {{ form_errors(form.description) }}
+            {{ form_label(form.description,"Description :") }}
+            {{ form_widget(form.description , { 'attr': {'class': 'form-control'} })  }}
+        </div>
+
         <div class="col-xs-8">
             <div class="cf-input">
                 <label class="custom-file ">
