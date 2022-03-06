@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Entity;
-
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -69,6 +68,8 @@ class Transport
     }
 
 
+
+
     public function getId(): ?int
     {
         return $this->id;
@@ -109,11 +110,7 @@ class Transport
 
         return $this;
     }
-
-    public function __toString()
-    {
-        return (string)$this->getTypeTransport();
-    }
+    public function __toString() { return (string) $this->getTypeTransport(); }
 
     /**
      * @return Collection|Activitelike[]

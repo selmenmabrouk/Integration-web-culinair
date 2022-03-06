@@ -2,23 +2,20 @@
 
 namespace App\Controller;
 
-use App\Repository\PromotionRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-
-class PromotionController extends AbstractController
+class TestController extends AbstractController
 {
+
     /**
-     * @Route("/promotion", name="promotion")
+     * @Route("/test", name="test")
      */
     public function index(): Response
     {
-        return $this->render('promotion/index.html.twig', [
-            'controller_name' => 'PromotionController',
+        return $this->render('base-back.html.twig', [
+            'controller_name' => 'TestController',
         ]);
     }
-
-
 }

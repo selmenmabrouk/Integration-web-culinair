@@ -8,7 +8,6 @@ use App\Repository\PromotionRepository;
 use App\Entity\Evenement;
 use App\Form\EvenementType;
 use App\Repository\EvenementRepository;
-use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
@@ -31,11 +30,12 @@ class EvenementController extends AbstractController
         ]);
     }
 
+
+
     /**
      * @param EvenementRepository $repository
      * @return Response
      * @Route ("/",name ="afficheE")
-     * @throws Exception
      */
     public function afficheEvent(EvenementRepository $repository)
     {
@@ -79,46 +79,43 @@ class EvenementController extends AbstractController
     }
 
 
+
     /**
      * @param EvenementRepository $repository
      * @return Response
-     * @Route ("/back",name ="afficheE2")
+     * @Route ("/admin",name ="afficheE2")
      */
 
-    public function afficheEvent2(EvenementRepository $repository, PromotionRepository $repo)
-    {
-        $event = $repository->findAll();
-        $promotion = $repo->findAll();
-        return $this->render('base-back.html.twig', [
-            'event' => $event,
-            'promotion' => $promotion
-        ]);
+    public function afficheEvent2 (EvenementRepository $repository,PromotionRepository $repo){
+        $event=$repository->findAll();
+        $promotion=$repo->findAll();
+        return $this->render('base-back.html.twig',[
+            'event'=>$event,
+            'promotion'=>$promotion
+            ]);
     }
-
     /**
      * @Route("/details/{idevent}", name="detail")
      */
     public function details($idevent)
     {
 
-        $evenement = $this->getDoctrine()->getRepository(Evenement::class)->find($idevent);
+    $evenement = $this->getDoctrine()->getRepository(Evenement::class)->find($idevent);
 
         return $this->render('evenement/detail.html.twig', [
             'evenement' => $evenement]);
 
     }
-
     /**
      * @Route ("/event/{id}",name="deleteEv")
      */
-    public function deleteE($id, EvenementRepository $repository)
-    {
-        $evenement = $repository->find($id);
+    public function deleteE($id,EvenementRepository $repository){
+        $evenement=$repository->find($id);
 
-        $em = $this->getDoctrine()->getManager();
+        $em=$this->getDoctrine()->getManager();
         $em->remove($evenement);
         $em->flush();
-        return $this->redirectToRoute('afficheE2', [
+        return $this->redirectToRoute('afficheE2',[
 
         ]);
 
@@ -130,78 +127,78 @@ class EvenementController extends AbstractController
      * @Route ("/evenement/ajout",name="ajoutE")
      */
 
-    public function ajouterP(\Symfony\Component\HttpFoundation\Request $request)
-    {
-        $evenement = new Evenement();
-        $form = $this->createForm(EvenementType::class, $evenement);
-        $form->add('ajouter', SubmitType::class);
+    public function ajouterP(\Symfony\Component\HttpFoundation\Request $request){
+        $evenement=new Evenement();
+        $form=$this->createForm(EvenementType::class,$evenement);
+        $form->add('ajouter',SubmitType::class);
         $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
+        if($form->isSubmitted() && $form->isValid()){
 
             $ev = $form->getData();
             $img = $form->get('image')->getData();
-            $upload = md5(uniqid()) . '.' . $img->guessExtension();
-            try {
+            $upload= md5(uniqid()).'.'.$img->guessExtension();
+            try{
                 $img->move(
                     $this->getParameter('images_directory'),
                     $upload
                 );
 
-            } catch (FileException $e) {
+            }catch (FileException $e){
 
             }
             $ev->setImage($upload);
-            $em = $this->getDoctrine()->getManager();
+            $em=$this->getDoctrine()->getManager();
             $em->persist($evenement);
             $em->flush();
             return $this->redirectToRoute('afficheE2');
         }
-        return $this->render('evenement/ajoutEvenement.html.twig', [
-            'form' => $form->createView()]);
+        return $this->render('evenement/ajoutEvenement.html.twig',[
+            'form'=>$form->createView()]);
     }
+
+
 
 
     /**
      * @Route ("/evenement/update/{id}",name="updateE")
      */
 
-    public function updateE(EvenementRepository $repository, \Symfony\Component\HttpFoundation\Request $request, $id)
-    {
-        $evenement = $repository->find($id);
-        $form = $this->createForm(EvenementType::class, $evenement);
-        $form->add('update', SubmitType::class);
+    public function updateE(EvenementRepository $repository,\Symfony\Component\HttpFoundation\Request $request,$id){
+        $evenement=$repository->find($id);
+        $form=$this->createForm(EvenementType::class,$evenement);
+        $form->add('update',SubmitType::class);
         $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
+        if($form->isSubmitted() && $form->isValid()){
             $ev = $form->getData();
             $img = $form->get('image')->getData();
-            $upload = md5(uniqid()) . '.' . $img->guessExtension();
-            try {
+            $upload= md5(uniqid()).'.'.$img->guessExtension();
+            try{
                 $img->move(
                     $this->getParameter('images_directory'),
                     $upload
                 );
 
-            } catch (FileException $e) {
+            }catch (FileException $e){
 
             }
             $ev->setImage($upload);
-            $em = $this->getDoctrine()->getManager();
+            $em=$this->getDoctrine()->getManager();
             $em->flush();
             return $this->redirectToRoute('afficheE2');
         }
-        return $this->render('evenement/updateEvent.html.twig', [
-            'form' => $form->createView()
+        return $this->render('evenement/updateEvent.html.twig',[
+            'form'=>$form->createView()
         ]);
     }
+
 
 
     /**
      * @Route ("/promotion/delete/{id}",name="deleteP")
      */
-    public function deleteP(PromotionRepository $repo, $id)
-    {
-        $promotion = $repo->find($id);
-        $em = $this->getDoctrine()->getManager();
+    public function deleteP(PromotionRepository $repo,$id){
+        $promotion=$repo->find($id);
+        $em=$this->getDoctrine()->getManager();
         $em->remove($promotion);
         $em->flush();
         return $this->redirectToRoute('afficheE2');
@@ -214,20 +211,19 @@ class EvenementController extends AbstractController
      * @Route ("/promotion/ajout",name="ajoutP")
      */
 
-    public function ajoutPromotio(\Symfony\Component\HttpFoundation\Request $request)
-    {
-        $promotion = new Promotion();
-        $form = $this->createForm(PromotionType::class, $promotion);
-        $form->add('ajouter', SubmitType::class);
+    public function ajoutPromotio(\Symfony\Component\HttpFoundation\Request $request){
+        $promotion= new Promotion();
+        $form=$this->createForm(PromotionType::class,$promotion);
+        $form->add('ajouter',SubmitType::class);
         $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
+        if ($form->isSubmitted()&&$form->isValid()){
+            $em=$this->getDoctrine()->getManager();
             $em->persist($promotion);
             $em->flush();
             return $this->redirectToRoute('afficheE2');
         }
-        return $this->render('promotion/ajoutPromotion.html.twig', [
-            'form' => $form->createView()]);
+        return $this->render('promotion/ajoutPromotion.html.twig',[
+            'form'=>$form->createView()]);
     }
 
     /**
@@ -238,7 +234,7 @@ class EvenementController extends AbstractController
      * @Route ("/promotion/update/{id}",name="updateP")
      */
 
-    public function updatePromotion(PromotionRepository $repo, $id, \Symfony\Component\HttpFoundation\Request $request)
+    public function updatePromotion(PromotionRepository $repo,$id,\Symfony\Component\HttpFoundation\Request $request)
     {
         $promotion = $repo->find($id);
         $form = $this->createForm(PromotionType::class, $promotion);
@@ -255,7 +251,7 @@ class EvenementController extends AbstractController
     }
 
     /**
-     * @Route("/back/recherche", name="recherche_evenement")
+     * @Route("/admin/recherche", name="recherche_evenement")
      */
     public function rechercheEvent(Request $request, NormalizerInterface $normalizer): Response
     {
@@ -279,7 +275,7 @@ class EvenementController extends AbstractController
     }
 
     /**
-     * @Route("back/{id}/masquer", name="masquer_evenement")
+     * @Route("admin/{id}/masquer", name="masquer_evenement")
      */
 
     public function masquerEvent($id)
@@ -294,7 +290,7 @@ class EvenementController extends AbstractController
     }
 
     /**
-     * @Route("back/{id}/afficher", name="afficher_evenement")
+     * @Route("admin/{id}/afficher", name="afficher_evenement")
      */
     public function afficherEvent($id)
     {
