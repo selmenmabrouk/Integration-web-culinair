@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Aloha!</title>
+
+    <style type="text/css">
+        * {
+            font-family: Candara, Arial, sans-serif;
+        }
+        table{
+            font-size: 17px;
+        }
+        tfoot tr td{
+            font-weight: bold;
+            font-size: x-small;
+        }
+        .gray {
+            background-color: lightgray
+        }
+    </style>
+
+</head>
+<body>
+
+<table width="100%">
+    <tr>
+        <td valign="top"><img src="{{asset('assets/img/AuraLogo.png')}}" alt="" width="150"/></td>
+        <td align="right">
+            <h3>X</h3>
+            <pre>
+                Societe X
+                Adresse Esprit Ghazela
+                Fax: 70 323 543
+                Email xx@gmail.com
+                Date : {{ date }}
+            </pre>
+        </td>
+    </tr>
+
+</table>
+
+{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+
+        <strong>Administrateur</strong> {{ app.user.nom }} {{ app.user.prenom }}
+    Email : {{ app.user.email }}
+
+{% endif %}
+
+
+
+
+
+
+
+<table width="100%">
+    <thead style="background-color: lightgray;">
+    <tr>
+        <th>#</th>
+        <th>Nom</th>
+        <th>Prenom</th>
+        <th>Email</th>
+        <th>Roles</th>
+    </tr>
+    </thead>
+    <tbody style="text-align:center;">
+    {% set i=0 %}
+    {% for user in users %}
+        {% set i = i + 1 %}
+
+        <tr>
+            <td>{{ i }}</td>
+
+            <td>{{ user.nom }}</td>
+            <td>{{ user.prenom }}</td>
+            <td>{{ user.email }}</td>
+            <td>{% for role in user.roles %}{{role}} {% endfor %}</td>
+        </tr>
+    {% endfor %}
+
+    </tbody>
+
+
+</table>
+
+</body>
+</html>

@@ -1,0 +1,73 @@
+{% extends "admin/base.html.twig" %}
+
+{% block title %}Liste des utilisateurs.{% endblock %}
+    {% block content %}
+        <div class="wrapper">
+            <div class="main-panel">
+
+                <div class="content">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="card strpied-tabled-with-hover">
+
+
+
+                                    <a class="nav-link" href="{{ path('pdfUsers') }}">Generer un pdf</a>
+
+
+
+
+                                </div>
+                                <div class="card-body table-full-width table-responsive">
+                                    <table class="table table-hover table-striped">
+                                        <thead>
+
+                                        <th>Nom</th>
+                                        <th>Nom</th>
+                                        <th>Prenom</th>
+                                        <th>Email.</th>
+                                        <th>Roles</th>
+
+
+                                        </thead>
+                                        <tbody>
+
+
+                                        {% for user in users %}
+
+
+                                            <tr >
+
+                                                    <td>{{ user.nom }}</td>
+                                                    <td>{{ user.prenom }}</td>
+                                                    <td>{{ user.email }}</td>
+                                                <td>{% for role in user.roles %}{{role}} {% endfor %}</td>
+                                                <td><button><a href="{{path('user_update',{ 'id' : user.id})}}">Modifier</button></td>
+                                                <td><button><a href="{{path('user_remove',{ 'id' : user.id})}}">Supprimer</button></td>
+
+
+
+
+                                            </tr >
+                                        {% endfor %}
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+
+    {% endblock %}
+
+
+
+
+{% block footer %}
+{% endblock %}
