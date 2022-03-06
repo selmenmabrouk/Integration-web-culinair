@@ -1,0 +1,59 @@
+p a {
+    color: #2fa7a1;
+}
+.theme-cl {
+    color:#2fa7a1 !important;
+}
+.theme-bg {
+    background:#2fa7a1;
+}
+.theme-btn {
+    background:#2fa7a1;
+    border: 1px solid #2fa7a1;
+}
+nav.navbar.bootsnav ul.nav > li >a.btn-signup.red-btn {
+    background: #2fa7a1 !important;
+}
+.half-bg:before {
+    background: #2fa7a1;
+}
+.footer .f-social-box ul li a i:hover, .footer .f-social-box ul li a i:focus {
+    background: #2fa7a1;
+    border-color: #2fa7a1;
+}
+.daterangepicker td.active, .daterangepicker td.active:hover {
+    background-color: #2fa7a1;
+}
+.custom-checkbox input[type="checkbox"]:checked + label:before {
+    border-color: #2fa7a1;
+    background: #2fa7a1;
+}
+.pagination>.active>a, .pagination>.active>span, .pagination>.active>a:hover, .pagination>.active>span:hover, .pagination>.active>a:focus, .pagination>.active>span:focus, .pagination>li>a:hover, .pagination>li>a:focus {
+    background-color: #2fa7a1;
+    border-color: #2fa7a1;
+}
+.pagination>.active>a, .pagination>.active>span, .pagination>.active>a:hover, .pagination>.active>span:hover, .pagination>.active>a:focus, .pagination>.active>span:focus, .pagination>li>a:hover, .pagination>li>a:focus {
+    background-color: #2fa7a1;
+    border-color: #2fa7a1;
+}
+.profile-header-nav .nav-tabs li.active a, .profile-header-nav .nav-tabs li.active a:focus, .profile-header-nav .nav-tabs li.active a:hover {
+    color: #2fa7a1;
+}
+.profile-header-nav .nav-tabs li a:hover {
+    color: #2fa7a1;
+}
+.active a.btn.btn-pricing {
+    background: #2fa7a1;
+    border-color:#2fa7a1;
+}
+.simple-tab-style .nav-tabs > li.active > a, .simple-tab-style .nav-tabs > li.active > a:hover, .simple-tab-style .nav-tabs > li.active > a:focus {
+    background:#2fa7a1;
+    border: 1px solid #2fa7a1;
+}
+#dashboard-menu li.active>a {
+    color: #2fa7a1;
+}
+#dashboard-menu li>a:hover, #dashboard-menu li>a:focus {
+    background: #ffffff;
+    color: #2fa7a1;
+}

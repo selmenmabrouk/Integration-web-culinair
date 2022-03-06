@@ -1,0 +1,96 @@
+p a {
+    color: #deeb31;
+}
+
+.theme-cl {
+    color: #deeb31 !important;
+}
+
+.theme-bg {
+    background: #deeb31;
+}
+
+.theme-btn {
+    background: #deeb31;
+    border: 1px solid #deeb31;
+}
+
+nav.navbar.bootsnav ul.nav>li>a.btn-signup.red-btn {
+    background: #deeb31 !important;
+}
+
+.half-bg:before {
+    background: #deeb31;
+}
+
+.footer .f-social-box ul li a i:hover,
+.footer .f-social-box ul li a i:focus {
+    background: #deeb31;
+    border-color: #deeb31;
+}
+
+.daterangepicker td.active,
+.daterangepicker td.active:hover {
+    background-color: #deeb31;
+}
+
+.custom-checkbox input[type="checkbox"]:checked+label:before {
+    border-color: #deeb31;
+    background: #deeb31;
+}
+
+.pagination>.active>a,
+.pagination>.active>span,
+.pagination>.active>a:hover,
+.pagination>.active>span:hover,
+.pagination>.active>a:focus,
+.pagination>.active>span:focus,
+.pagination>li>a:hover,
+.pagination>li>a:focus {
+    background-color: #deeb31;
+    border-color: #deeb31;
+}
+
+.pagination>.active>a,
+.pagination>.active>span,
+.pagination>.active>a:hover,
+.pagination>.active>span:hover,
+.pagination>.active>a:focus,
+.pagination>.active>span:focus,
+.pagination>li>a:hover,
+.pagination>li>a:focus {
+    background-color: #deeb31;
+    border-color: #deeb31;
+}
+
+.profile-header-nav .nav-tabs li.active a,
+.profile-header-nav .nav-tabs li.active a:focus,
+.profile-header-nav .nav-tabs li.active a:hover {
+    color: #deeb31;
+}
+
+.profile-header-nav .nav-tabs li a:hover {
+    color: #deeb31;
+}
+
+.active a.btn.btn-pricing {
+    background: #deeb31;
+    border-color: #deeb31;
+}
+
+.simple-tab-style .nav-tabs>li.active>a,
+.simple-tab-style .nav-tabs>li.active>a:hover,
+.simple-tab-style .nav-tabs>li.active>a:focus {
+    background: #deeb31;
+    border: 1px solid #deeb31;
+}
+
+#dashboard-menu li.active>a {
+    color: #deeb31;
+}
+
+#dashboard-menu li>a:hover,
+#dashboard-menu li>a:focus {
+    background: #ffffff;
+    color: #deeb31;
+}
