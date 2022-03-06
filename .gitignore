@@ -54,3 +54,4 @@
 migrations
 
 .idea
+composer.lock
