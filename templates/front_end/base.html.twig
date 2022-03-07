@@ -51,8 +51,16 @@
 
             {% if app.user %}
                 <ul class="nav navbar-nav navbar-right">
+                    {% for role in app.user.roles %}
+                        {% if role == "ROLE_ADMIN" %}
+                        <li class="br-right">
+                            <a href="{{ path("evenement_index") }}"><i
+                                        class="login-icon ti-briefcase"></i>Espace Admin</a>
+                        </li>
+                        {% endif %}
+                    {% endfor %}
                     <li class="br-right">
-                        <a href="#" ><i
+                        <a href="#"><i
                                     class="login-icon ti-user"></i>{{ app.user.email }}</a>
                     </li>
                     <li>
@@ -64,8 +72,9 @@
                 </ul>
             {% else %}
                 <ul class="nav navbar-nav navbar-right">
+
                     <li class="br-right">
-                        <a href="{{ path("app_login") }}" ><i
+                        <a href="{{ path("app_login") }}"><i
                                     class="login-icon ti-user"></i>Connexion</a>
                     </li>
                     <li class="sign-up">
