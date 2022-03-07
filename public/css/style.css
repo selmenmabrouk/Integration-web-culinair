@@ -2577,7 +2577,7 @@ html body .label-default {
     font-size: 16px;
     padding: 11px 17px;
     border: none;
-    background-color: red ;
+    background-color: red background-color: red;
     outline: none;
 }
 
@@ -4646,7 +4646,7 @@ figure .read_more span {
 
 .tour-box .list-like:hover,
 .tour-box .list-like:focus {
-    color: #ffffff;
+    color: ffffff;
 }
 
 .list-like.left {
@@ -5663,7 +5663,7 @@ span.featured-tour {
 /*---------- Travel Component: List Style Restaurent --------------*/
 
 .restaurent-box.list-style {
-   height: 400px;
+    height: 250px;
     position: relative;
     margin-bottom: 30px;
     line-height: 1.375;

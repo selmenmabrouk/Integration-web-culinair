@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from codeminifier.com/travel-stock-demo/dashboard.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 08 Feb 2022 22:33:45 GMT -->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{% block title %}Culin'air{% endblock %}</title>
+
+    {% block stylesheets %}
+        <!-- Plugins CSS -->
+        <link rel="stylesheet" href="{{ asset ('plugins/css/plugins.css') }}">
+        <!-- Custom style -->
+        <link href="{{ asset ('css/style.css') }}" rel="stylesheet">
+        <link href="{{ asset ('css/responsiveness.css') }}" rel="stylesheet">
+        <link id="jssDefault" rel="stylesheet" href="{{ asset ('css/skins/default.css') }}">
+    {% endblock %}
+</head>
+<body class="gray-bg">
+<!-- ======================= Start Navigation ===================== -->
+<nav class="navbar navbar-default navbar-mobile navbar-fixed light bootsnav">
+    <div class="container">
+
+        <!-- Start Logo Header Navigation -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
+                <i class="fa fa-bars"></i>
+            </button>
+            <a class="navbar-brand" href="{{ asset("/admin") }}">
+                <img src="{{ asset ('img/culinaira.png') }}" class="logo logo-display" alt="">
+                <img src="{{ asset ('img/culinaira.png') }}" class="logo logo-scrolled" alt="">
+            </a>
+
+        </div>
+        <!-- End Logo Header Navigation -->
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="navbar-menu">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown dash-link"><a href="#" class="dropdown-toggle"><img
+                                src="{{ asset ('img/user-3.jpg') }}" class="img-responsive avatar" alt=""/>Hi,
+                        Admin</a>
+                    <ul class="dropdown-menu left-nav">
+                        <li><a href="{{ path("app_logout") }}">Log Out</a></li>
+                    </ul>
+                </li>
+            </ul>
+
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</nav>
+<!-- ======================= End Navigation ===================== -->
+<section class="dashboard add-0 mrg-top-50 mrg-bot-40">
+    <div class="container-fluid">
+        <div class="row mrg-20">
+            <div class="col-lg-2 col-md-2 col-sm-3 dashboard-bg">
+                <!-- /. NAV TOP  -->
+                <nav class="navbar navbar-side">
+                    <!-- Start Logo Header Navigation -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse"
+                                data-target="#dashboard-menu">
+                            <i class="fa fa-bars"></i>
+                        </button>
+
+                    </div>
+                    <div class="collapse sidebar-collapse" id="dashboard-menu">
+                        <div class="profile-wrapper">
+                            <div class="profile-wrapper-thumb">
+                                <img src="{{ asset ('img/user-3.jpg') }}" class="img-responsive img-circle"
+                                     alt=""/>
+                                <span class="dashboard-user-status bg-success"></span>
+                            </div>
+                            <h4>Admin</h4>
+                        </div>
+                        <ul class="nav" id="main-menu">
+                            <li>
+                                <a href="{{ asset("/admin") }}">
+                                    <i class="fa fa-user" aria-hidden="true"></i>
+                                    Utilisateurs
+                                </a>
+                            </li>
+                            <li class="log-off">
+                                <a href="{{ path('evenement_index') }}">
+                                    <i class="fa fa-calendar" aria-hidden="true"></i>
+                                    Evenements
+                                </a>
+                            </li>
+                            <li class="log-off">
+                                <a href="{{ path('activite_index') }}">
+                                    <i class="fa fa-play" aria-hidden="true"></i>
+                                    Activités
+                                </a>
+                            </li>
+                            <li class="log-off">
+                                <a href="{{ path('transport_index') }}">
+                                    <i class="fa fa-car" aria-hidden="true"></i>
+                                    Transport
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+                <!-- /. NAV SIDE  -->
+            </div>
+            <div class="col-lg-10 col-md-10 col-sm-9 col-lg-push-2 col-md-push-2 col-sm-push-3">
+                <div class="row mrg-l-10 mrg-r-10">
+                    {% block body %}
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<div class="w3-sidebar w3-bar-block w3-card-2 w3-animate-right" style="display:none;right:0;" id="rightMenu">
+    <button onclick="closeRightMenu()" class="w3-bar-item w3-button w3-large theme-bg">Close &times;</button>
+    <ul id="styleOptions" title="switch styling">
+        <li>
+            <a href="javascript: void(0)" class="cl-box cl-default" data-theme="skins/default"></a>
+        </li>
+        <li>
+            <a href="javascript: void(0)" class="cl-box cl-red" data-theme="skins/red"></a>
+        </li>
+        <li>
+            <a href="javascript: void(0)" class="cl-box cl-green" data-theme="skins/green"></a>
+        </li>
+        <li>
+            <a href="javascript: void(0)" class="cl-box cl-blue" data-theme="skins/blue"></a>
+        </li>
+        <li>
+            <a href="javascript: void(0)" class="cl-box cl-pink" data-theme="skins/pink"></a>
+        </li>
+        <li>
+            <a href="javascript: void(0)" class="cl-box cl-purple" data-theme="skins/purple"></a>
+        </li>
+    </ul>
+</div>
+<!-- /Switcher -->
+
+<!-- =================== START JAVASCRIPT ================== -->
+{% block javascript %}
+<script src="{{ asset ('plugins/js/jquery.min.js') }}"></script>
+<script src="{{ asset ('plugins/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset ('plugins/js/viewportchecker.js') }}"></script>
+<script src="{{ asset ('plugins/js/bootsnav.js') }}"></script>
+<script src="{{ asset ('plugins/js/slick.min.js') }}"></script>
+<script src="{{ asset ('plugins/js/jquery.nice-select.min.js') }}"></script>
+<script src="{{ asset ('plugins/js/jquery.fancybox.min.js') }}"></script>
+<script src="{{ asset ('plugins/js/jquery.downCount.js') }}"></script>
+<script src="{{ asset ('plugins/js/freshslider.1.0.0.js') }}"></script>
+<script src="{{ asset ('plugins/js/moment.min.js') }}"></script>
+<script src="{{ asset ('plugins/js/daterangepicker.js') }}"></script>
+<script src="{{ asset ('plugins/js/wysihtml5-0.3.0.js') }}"></script>
+<script src="{{ asset ('plugins/js/bootstrap-wysihtml5.js') }}"></script>
+
+<!-- Dashboard Js -->
+<script src="{{ asset ('plugins/js/jquery.slimscroll.min.js') }}"></script>
+<script src="{{ asset ('plugins/js/jquery.metisMenu.js') }}"></script>
+<script src="{{ asset ('plugins/js/jquery.easing.min.js') }}"></script>
+<script src="{{ asset ('plugins/js/raphael.min.js') }}"></script>
+<script src="{{ asset ('plugins/js/morris.min.js') }}"></script>
+<script src="{{ asset ('js/chart.js') }}"></script>
+
+<!-- Custom Js -->
+<script src="{{ asset ('js/custom.js') }}"></script>
+
+
+<script src="{{ asset ('js/jQuery.style.switcher.js') }}"></script>
+<script>
+    function openRightMenu() {
+        document.getElementById("rightMenu").style.display = "block";
+    }
+    function closeRightMenu() {
+        document.getElementById("rightMenu").style.display = "none";
+    }
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#styleOptions').styleSwitcher();
+    });
+</script>
+{% endblock %}
+</body>
+
+<!-- Mirrored from codeminifier.com/travel-stock-demo/dashboard.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 08 Feb 2022 22:34:03 GMT -->
+</html>

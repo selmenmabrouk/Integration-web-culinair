@@ -1,0 +1,59 @@
+{% extends 'back_end/base.html.twig' %}
+{% block stylesheets %}
+    <!-- Plugins CSS -->
+    <link rel="stylesheet" href="{{ asset ('plugins/css/plugins.css') }}">
+
+    <!-- Custom style -->
+    <link href="{{ asset ('css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset ('css/responsiveness.css') }}" rel="stylesheet"><link id="jssDefault" rel="stylesheet" href="{{ asset ('css/skins/default.css') }}">
+{% endblock %}
+{% block body %}
+{{ form_start(form) }}
+
+<h1 style="text-align:left"> Ajouter un evenement </h1>
+    <div class="row">
+        <div class="col-xs-8">
+            {{ form_errors(form.nom) }}
+            {{ form_label(form.nom,"Nom :") }}
+            {{ form_widget(form.nom , { 'attr': {'class': 'form-control'} }) }}
+        </div>
+        <div class="col-xs-8">
+            {{ form_errors(form.date) }}
+            {{ form_label(form.date,"date :") }}
+            {{ form_widget(form.date , { 'attr': {} })  }}
+        </div>
+        <div class="col-xs-8">
+            {{ form_errors(form.lieu) }}
+            {{ form_label(form.lieu,"lieu :") }}
+            {{ form_widget(form.lieu , { 'attr': {'class': 'form-control'} })  }}
+        </div>
+        <div class="col-xs-8">
+            {{ form_label(form.Promotion,"promotion :") }}
+            {{ form_widget(form.Promotion , { 'attr': {'class': 'form-control'} })  }}
+        </div>
+        <div class="col-xs-8">
+            {{ form_errors(form.Prix) }}
+            {{ form_label(form.Prix,"Prix :") }}
+            {{ form_widget(form.Prix , { 'attr': {'class': 'form-control'} })  }}
+        </div>
+        <div class="col-xs-8">
+            {{ form_errors(form.description) }}
+            {{ form_label(form.description,"Description :") }}
+            {{ form_widget(form.description , { 'attr': {'class': 'form-control'} })  }}
+        </div>
+
+        <div class="col-xs-8 ">
+            <div class="cf-input">
+                <label class="custom-file ">
+                    {{ form_errors(form.image) }}
+                    {{ form_label(form.image,"image :") }}
+                    {{ form_widget(form.image , { 'attr': {'class': 'bg-white'} })  }}
+                </label>
+            </div>
+        </div>
+    </div>
+    <br>
+    {{ form_end(form) }}
+
+{% endblock %}
+

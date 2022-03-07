@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -166,12 +167,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getNaissance(): ?\DateTimeInterface
+    public function getNaissance(): ?DateTimeInterface
     {
         return $this->naissance;
     }
 
-    public function setNaissance(\DateTimeInterface $naissance): self
+    public function setNaissance(DateTimeInterface $naissance): self
     {
         $this->naissance = $naissance;
 

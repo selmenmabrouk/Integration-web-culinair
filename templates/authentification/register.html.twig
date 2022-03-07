@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Inscription</title>
+    <meta name="description" content=""/>
+    <meta name="keywords" content=""/>
+    <meta name="author" content="Themesdesign"/>
+
+    <link rel="shortcut icon" href="{{ asset('images/favicon.ico') }}">
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" type="text/css">
+    <!--Material Icon -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/materialdesignicons.min.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/selectize.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/nice-select.css') }}"/>
+    <!-- Custom  Css -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}"/>
+
+</head>
+
+<body>
+
+<!-- Hero Start -->
+<section style="background-image: url({{ asset('/img/BG-inscription.jpg') }}); margin: 0;
+        height:100%;
+        width:100%;
+        display: block;
+        box-sizing:border-box;">
+    <div class="home-center">
+        <div class="home-desc-center">
+            <div class="container">
+                <div class="row" style=" text-align-last: center;">
+                    <div class="col-md-6 mrg-top-25 " style="margin: 7rem 20rem;">
+                        <div class="login_page bg-white shadow rounded p-4"
+                             style="padding: 3rem; align-content: center">
+
+                            {% if app.user %}
+                                <div class="alert alert-danger mx-auto mb-5">
+                                    Vous êtes connecté : {{ app.user.username }}
+                                </div>
+                                <div class="col-md-8 m-auto">
+                                    <a class="btn btn-danger w-100"
+                                       href="{{ path('deconnexion') }}">Se deconnecter
+                                    </a>
+                                </div>
+                            {% else %}
+                                <div class="row">
+                                    <div class="form-group">
+                                        <h1>Inscription</h1>
+
+                                        {{ form_start(registrationForm) }}
+                                        {{ form_row(registrationForm.nom,{label:"Nom"} ) }}
+                                        {{ form_row(registrationForm.prenom,{label:"Prenom"} ) }}
+                                        {{ form_row(registrationForm.naissance,{label:"Date de naissance"} ) }}
+                                        <br>
+                                        <br>
+                                        {{ form_row(registrationForm.email) }}
+                                        {{ form_row(registrationForm.plainPassword, {
+                                            label: 'Mot de passe'
+                                        }) }}
+                                        {{ form_row(registrationForm.agreeTerms) }}
+
+                                        <button type="submit" class="btn">Valider</button>
+                                        {{ form_end(registrationForm) }}
+                                    </div>
+                                    <div class="mx-auto">
+                                        <p class="mb-0 mt-3"><small class="text-dark mr-2">Vous avez deja un compte
+                                                ?</small>
+                                            <a href="{{ asset('connexion') }}"
+                                               class="text-dark font-weight-bold">Se connecter</a>
+                                        </p>
+                                        <a href="{{ asset('') }}"
+                                           class="text-dark bg-light rounded d-inline-block text-center"><i
+                                                    class="fa fa-home"></i>Revenir a l'accueil</a>
+                                        </p>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div> <!--end col-->
+                </div><!--end row-->
+            </div> <!--end container-->
+        </div>
+    </div>
+</section><!--end section-->
+<!-- Hero End -->
+
+<!-- javascript -->
+<script src="{{ asset('js/jquery.min.js') }}"></script>
+<script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ asset('js/jquery.easing.min.js') }}"></script>
+<script src="{{ asset('js/plugins.js') }}"></script>
+
+<!-- selectize js -->
+<script src="{{ asset('js/selectize.min.js') }}"></script>
+
+<script src="{{ asset('js/jquery.nice-select.min.js') }}"></script>
+
+<script src="{{ asset('js/app.js') }}"></script>
+</body>
+</html>
+

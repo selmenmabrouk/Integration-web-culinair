@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Connexion</title>
+    <meta name="description" content=""/>
+    <meta name="keywords" content=""/>
+    <meta name="author" content="Themesdesign"/>
+
+    <link rel="shortcut icon" href="{{ asset('images/favicon.ico') }}">
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" type="text/css">
+    <!--Material Icon -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/materialdesignicons.min.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/selectize.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/nice-select.css') }}"/>
+    <!-- Custom  Css -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}"/>
+
+</head>
+
+<body>
+
+<!-- Hero Start -->
+<section style="background-image: url({{ asset('/img/BG-inscription.jpg') }}); margin: 0;
+        height:100%;
+        width:100%;
+        display: block;
+        box-sizing:border-box;">
+    <div class="home-center">
+        <div class="home-desc-center">
+            <div class="container">
+                <div class="row" style=" text-align-last: center;">
+                    <div class="col-md-6 mrg-top-25 " style="margin: 7rem 20rem;">
+                        <div class="login_page bg-white shadow rounded p-4"
+                             style="padding: 3rem; align-content: center">
+                            <div class="text-center">
+                                <h2 class="mb-4">Connexion</h2>
+                            </div>
+
+                            {% if error %}
+                                <div class="alert alert-danger mx-auto mb-5">
+                                    {{ error.messageKey|trans(error.messageData, 'security') }}
+                                </div>
+                            {% endif %}
+
+                            {% if app.user %}
+                                <div class="alert alert-danger mx-auto mb-5">
+                                    Vous êtes connecté : {{ app.user.username }}
+                                </div>
+                                <div class="col-md-8 m-auto">
+                                    <a class="btn btn-danger w-100"
+                                       href="{{ path('deconnexion') }}">Se deconnecter
+                                    </a>
+                                </div>
+                            {% else %}
+                                <form action="{{ path('app_login') }}" method="post">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group position-relative">
+                                                <label for="username">Email:</label>
+                                                <input type="text" id="username" class="form-control" name="_username"
+                                                       placeholder="exemple@email.com" value="{{ last_username }}"/>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group position-relative">
+                                                <label for="password">Password:</label>
+                                                <input type="password" class="form-control" id="password"
+                                                       name="_password" placeholder="Tapez votre mot de passe"/>
+                                            </div>
+                                        </div>
+                                        <input type="hidden" name="_csrf_token"
+                                               value="{{ csrf_token('authenticate') }}">
+                                        <div class="form-group text-center">
+                                            <button type="submit" class="btn theme-btn btn-m">Se connecter
+                                            </button>
+                                        </div>
+                                        <div class="mx-auto">
+                                            <p class="mb-0 mt-3"><small class="text-dark mr-2">Besoin d'un compte
+                                                    ?</small>
+                                                <a href="{{ asset('inscription') }}"
+                                                   class="text-dark font-weight-bold">S'inscrire</a>
+                                            </p>
+                                                <a href="{{ asset('') }}"
+                                                   class="text-dark bg-light rounded d-inline-block text-center"><i
+                                                            class="fa fa-home"></i>Revenir a l'accueil</a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </form>
+                            {% endif %}
+                        </div>
+                    </div> <!--end col-->
+                </div><!--end row-->
+            </div> <!--end container-->
+        </div>
+    </div>
+</section><!--end section-->
+<!-- Hero End -->
+
+<!-- javascript -->
+<script src="{{ asset('js/jquery.min.js') }}"></script>
+<script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ asset('js/jquery.easing.min.js') }}"></script>
+<script src="{{ asset('js/plugins.js') }}"></script>
+
+<!-- selectize js -->
+<script src="{{ asset('js/selectize.min.js') }}"></script>
+
+<script src="{{ asset('js/jquery.nice-select.min.js') }}"></script>
+
+<script src="{{ asset('js/app.js') }}"></script>
+</body>
+</html>

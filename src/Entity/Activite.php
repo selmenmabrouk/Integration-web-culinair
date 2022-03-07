@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups ;
 
 /**
+ * @property ArrayCollection $likes
  * @ORM\Entity(repositoryClass=ActiviteRepository::class)
  */
 class Activite

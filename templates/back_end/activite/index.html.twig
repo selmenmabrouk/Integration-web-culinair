@@ -1,0 +1,92 @@
+{% extends 'back_end/base.html.twig' %}
+
+{% block title %}Activite index{% endblock %}
+
+{% block body %}
+
+
+    <br>
+    <br>
+    <br>
+    <br>
+    {{ form_start(form) }}
+
+    <div class="form-row align-items-end" >
+        <div class="col">
+            {{ form_row(form.nom) }}
+        </div>
+
+        <div class="col">
+            <div class="form-group">
+                <button type="submit" class="btn btn-success">Rechercher</button>
+            </div>
+        </div>
+    </div>
+    {{ form_end(form) }}
+
+<div class="content-page">
+    <!-- Start content -->
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card-box table-responsive">
+    <h1>Activite index</h1>
+                        {% for message in app.flashes('info') %}
+                            <div class="alert alert-success">
+                                {{ message }}
+                            </div>
+
+                        {% endfor %}
+                        <table class="table">
+        <thead>
+            <tr>
+
+                <th>nom</th>
+                <th>Type_activite</th>
+                <th>Description</th>
+                <th>Temps</th>
+                <th>Prix_activite</th>
+                <th>Nombre_participant</th>
+                <th>TypeTransport</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for activite in activites%}
+            <tr>
+
+                <td>{{ activite.nom }}</td>
+                <td>{{ activite.typeActivite }}</td>
+                <td>{{ activite.description }}</td>
+                <td>{{ activite.temps }}</td>
+                <td>{{ activite.prixActivite }}</td>
+                <td>{{ activite.nombreParticipant }}</td>
+                <td>{{ activite.TypeTransport }}</td>
+                <td>
+                    <a href="{{ path('activite_show', {'id': activite.id}) }}">show</a>
+                    <a href="{{ path('activite_edit', {'id': activite.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('activite_new') }}">Create new</a>
+
+                    </div>
+
+
+                    </div>
+                    </div>
+
+                    </div>
+                    </div>
+
+
+</div>
+{% endblock %}

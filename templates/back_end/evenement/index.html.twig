@@ -1,0 +1,145 @@
+{% extends 'back_end/base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block body %}
+    <div class="tr-single-box">
+        <div class="tr-single-header">
+            <h3 class="dashboard-title">Evenements et Promotions</h3>
+        </div>
+    </div>
+    <div class="tr-single-box">
+        <div class="tr-single-body">
+            <!-- SELMEN -->
+            <h3>liste des evenements disponibles</h3> <br>
+            <a class="booking-success" href="{{ path('evenement_new') }}">ajouter</a>
+            <br> <br> <br>
+            <table class="table table-secondary">
+                <label for="search"></label><input id="search" type=text value="" placeholder="type a name">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nom</th>
+                    <th>Date</th>
+                    <th>Lieu</th>
+                    <th>Prix</th>
+                    <th>TauxPromotion</th>
+                    <th>Statut</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody id="body1">
+                {% for e in evenements %}
+                    <tr>
+                        <td>{{ e.id }}</td>
+                        <td>{{ e.nom }}</td>
+                        <td>{{ e.date | date("d-m-Y") }}</td>
+                        <td>{{ e.lieu }}</td>
+                        <td>{{ e.prix }}</td>
+                        <td>{{ e.promotion.tauxPromotion }}</td>
+                        <td>{{ e.enable }}</td>
+                        <td>
+                            <a href="{{ path('evenement_delete',{'id':e.id}) }}">
+                                <input class='btn btn-danger text-white' type='submit' value='Supprimer'/>
+                            </a>
+                            <a href="{{ path('evenement_edit',{'id':e.id}) }}">
+                                <input class='btn btn-warning text-white' type='submit' value='Modifier'/>
+                            </a>
+                            <a href="{{ path('masquer_evenement',{'id':e.id}) }}">
+                                <input class='btn btn-success text-white' type='submit' value='Masquer'/>
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+                <tbody id="searchBody">
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="tr-single-box">
+        <div class="tr-single-body">
+            <h3>liste des Promotions disponibles</h3> <br>
+            <a class="" href="{{ path('promotion_new') }}">ajouter</a>
+            <br> <br> <br>
+            <table class="table table-secondary">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Taux de promotion</th>
+                    <th>Decription</th>
+                    <th>Supprimer</th>
+                    <th>Modifier</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for p in promotions %}
+                    <tr>
+                        <td>{{ p.Id }}</td>
+                        <td>{{ p.tauxPromotion }}%</td>
+                        <td>{{ p.description }}</td>
+                        <td><a style=color:red href="{{ path('promotion_delete',{'id':p.id}) }}">supprimer</a></td>
+                        <td><a style=color:#00c94a href="{{ path('promotion_edit',{'id':p.id}) }}">update</a></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $("#search").keyup(function () {
+            var value = $("#search").val();
+            if (value === "") {
+                $('#searchBody').hide();
+                $('#body1').show();
+            } else {
+                $('#searchBody').show();
+                $('#body1').hide();
+            }
+            $.ajax({
+                    type: 'GET',
+                    url: 'admin/recherche',
+                    data: {
+                        'valeur-recherche': value
+                    },
+                    success: function (retour) {
+                        if (retour) {
+                            $('#searchBody').empty()
+                            $.each(JSON.parse(retour), function (i, obj) {
+
+                                $('#searchBody').append(
+                                    "<tr>" +
+                                    "    <td>" + obj.id + "</td>" +
+                                    "    <td>" + obj.nom + "</td>" +
+                                    "    <td>" + obj.date + "</td>" +
+                                    "    <td>" + obj.lieu + "</td>" +
+                                    "    <td>" + obj.prix + "$</td>" +
+                                    "    <td>" + obj.promotion + "%</td>" +
+                                    "    <td> Affiché </td>" +
+
+                                    "        <td>" +
+                                    "           <a href='/" + obj.Id + "/edit'>" +
+                                    "               <input class='btn btn-warning' type='submit' value='Update'/>" +
+                                    "           </a>" +
+                                    "           <a href='/" + obj.Id + "/delete'>" +
+                                    "               <input class='btn btn-danger' type='submit' value='Supprimer'/>" +
+                                    "           </a>" +
+                                    "           <a href='afficher_evenement/" + obj.Id + "'>" +
+                                    "               <input class='btn btn-success text-white' type='submit' value='Masquer'/>" +
+                                    "           </a>" +
+                                    "        </td>" +
+                                    "    </tr>"
+                                );
+
+                                console.log("wsel");
+                            });
+                        }
+                    },
+                }
+            );
+        })
+    </script>
+{% endblock %}

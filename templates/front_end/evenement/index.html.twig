@@ -1,0 +1,91 @@
+{% extends 'front_end/base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block body %}
+    {% for e in evenement %}
+        {% if e.enable==0 %}
+
+            <div class="col-md-4 col-md-6">
+                <article class="destination-box style-1">
+                    <div class="destination-box-image">
+                        <figure>
+                            <a href="#">
+                                <img src="{{ asset('uploads/') }}{{ e.image }}"
+                                     class="img-responsive listing-box-img" alt=""/>
+
+                                <div class="list-overlay"></div>
+                            </a>
+                            <!-- taux de promosion -->
+                            <div class="discount-flick">{{ e.promotion.tauxPromotion }}%</div>
+                            <div class="container ">
+                                <div class="row"
+                                     style="width: 80%;position: absolute ; bottom: 20px ;color: white ; ">
+                                    <div class="col-md-9">
+                                        <h4 class="destination-place">
+                                            <a href="#" style="color: white ; ">{{ e.nom }}</a>
+                                        </h4>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="container ">
+                                <div class="row"
+                                     style="width: 80%;position: absolute ;margin-left:260px; bottom: 1px ;color: white ; ">
+
+
+                                    <div class="col-md-3">
+                                        <h4 class="destination-place">
+                                            <a class="real-price padd-l-10 font-bold" href="#"
+                                               style="color: #deeb31;justify-content: flex-end ">{{ e.difference }} {{ e.difference1 }} {{ e.difference2 }}</a>
+
+                                        </h4>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <a href="#" class="list-like left"><i class="ti-heart"></i></a>
+                        </figure>
+                    </div>
+
+                    <div class="entry-meta">
+                        <div class="meta-item meta-rating" style="text-transform: uppercase">
+                            <strike style="color: #0f0f0f"> {{ e.prix }}$ </strike>
+                        </div>
+                        <div class="meta-item meta-comment fl-right">
+                            <span class="real-price padd-l-10 font-bold"><strong>{{ e.prix- e.promotion.tauxPromotion * e.prix/100 }}$ </strong></span>
+                        </div>
+                    </div>
+
+                    <div class="row" style="width: 100%">
+                        <div class="col-md-6">
+                            <h4 class="" style="text-transform: uppercase">
+
+                                {{ e.lieu }}
+                            </h4>
+                        </div>
+                        <div class="col-md-3">
+
+                        </div>
+
+
+                    </div>
+                    <div class="row" style="width: 100%">
+                        <div class="col-md-6">
+                            <h4 class="" style="text-transform: uppercase">
+
+                                <a href="{{ asset("evenement/details/"~e.id) }}">details</a>
+                            </h4>
+                        </div>
+                        <div class="col-md-3">
+
+                        </div>
+
+
+                    </div>
+                </article>
+            </div>
+        {% endif %}
+
+    {% endfor %}
+{% endblock %}
