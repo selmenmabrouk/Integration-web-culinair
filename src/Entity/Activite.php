@@ -96,10 +96,14 @@ class Activite
     private $TypeTransport;
 
     /**
-     * @ORM\OneToMany(targetEntity=Activitelike::class, mappedBy="Activitelike")
+     * @ORM\OneToMany(targetEntity=ActiviteLike::class, mappedBy="Activite")
      */
-    private $Likes;
+    private $likes;
 
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $LikeCount;
 
 
     public function __construct()
@@ -197,35 +201,59 @@ class Activite
         return $this;
 
     }
-    public function __toString() { return (string) $this->getTypeTransport(); }
 
     /**
-     * @return Collection|Activitelike[]
+     * @return Collection<int, ActiviteLike>
      */
     public function getLikes(): Collection
     {
         return $this->likes;
     }
 
-    public function addLike(Activitelike $like): self
+    public function addLike(ActiviteLike $like): self
     {
         if (!$this->likes->contains($like)) {
             $this->likes[] = $like;
-            $like->setActivitelike($this);
+            $like->setActivite($this);
         }
 
         return $this;
     }
 
-    public function removeLike(Activitelike $like): self
+    public function removeLike(ActiviteLike $like): self
     {
         if ($this->likes->removeElement($like)) {
             // set the owning side to null (unless already changed)
-            if ($like->getActivitelike() === $this) {
-                $like->setActivitelike(null);
+            if ($like->getActivite() === $this) {
+                $like->setActivite(null);
             }
         }
 
         return $this;
     }
+    /**
+     * @param User $user
+     * @return boolean
+     */
+    public function isLikedByUser(User $user) : bool
+    {
+        foreach($this->likes as $like){
+            if ($like->getUser() === $user) return true;
+        }
+        return false;
+    }
+
+
+    public function getLikeCount(): ?int
+    {
+        return $this->LikeCount;
+    }
+
+    public function setLikeCount(?int $LikeCount): self
+    {
+        $this->LikeCount = $LikeCount;
+
+        return $this;
+    }
+
 }

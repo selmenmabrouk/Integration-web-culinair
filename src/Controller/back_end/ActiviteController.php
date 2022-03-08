@@ -3,9 +3,11 @@
 namespace App\Controller\back_end;
 
 use App\Entity\Activite;
+use App\Entity\ActiviteLike;
 use App\Entity\ActiviteSearch;
 use App\Form\ActiviteType;
 use App\Form\ActiviteSearchType;
+use App\Repository\ActiviteLikeRepository;
 use App\Repository\ActiviteRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
@@ -16,7 +18,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
 /**
- * @Route("admin/activite")
+ * @Route("/admin/activite")
  */
 class ActiviteController extends AbstractController
 {
@@ -123,5 +125,50 @@ class ActiviteController extends AbstractController
         }
 
         return $this->redirectToRoute('activite_index', [], Response::HTTP_SEE_OTHER);
+    }
+
+    /**
+     * @Route("/search", name="serie-search")
+     */
+    public function searchSeries(activiteRepository $activiteRepository, Request $request): Response
+    {
+        return $this->render('back_end/activite/index.html.twig', [
+            'controller_name' => 'ActiviteController',
+            'activite' => $activiteRepository->findByNamePopular($request->query->get('query')),
+        ]);
+    }
+
+    /**
+     * @route ("/ActiviteFront/{id}/like",name="Activite_like")
+     * @param Activite $Activite
+     * @param ActiviteLikeRepository $likeRepo
+     * @return Response
+     */
+    public function like(Activite $Activite, ActiviteLikeRepository $likeRepo): Response
+    {
+        $user = $this->getUser();
+        if (!$user)
+            return $this->redirectToRoute("activite_front");
+        if ($Activite->isLikedByUser($user)) {
+            $like = $likeRepo->findOneBy([
+                'Activite' => $Activite,
+                'user' => $user]);
+            $entityManager = $this->getDoctrine()->getManager();
+
+            $entityManager->remove($like);
+            $entityManager->flush();
+
+            return $this->redirectToRoute("activite_front");
+
+        }
+        $like = new ActiviteLike();
+        $like->setActivite($Activite)
+            ->setUser($user);
+        $entityManager = $this->getDoctrine()->getManager();
+
+        $entityManager->persist($like);
+        $entityManager->flush();
+
+        return $this->redirectToRoute("activite_front");
     }
 }

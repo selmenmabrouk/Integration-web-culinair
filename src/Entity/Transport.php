@@ -52,12 +52,12 @@ class Transport
     private $capacite;
 
     /**
-     * @ORM\OneToMany(targetEntity=Activitelike::class, mappedBy="Transportlike")
+     * @ORM\OneToMany(targetEntity=ActiviteLike::class, mappedBy="Transportlike")
      */
     private $likes;
 
     /**
-     * @ORM\OneToMany(targetEntity=Activitelike::class, mappedBy="Transportlike")
+     * @ORM\OneToMany(targetEntity=ActiviteLike::class, mappedBy="Transportlike")
      */
     private $Likes;
 
@@ -113,14 +113,14 @@ class Transport
     public function __toString() { return (string) $this->getTypeTransport(); }
 
     /**
-     * @return Collection|Activitelike[]
+     * @return Collection|ActiviteLike[]
      */
     public function getLikes(): Collection
     {
         return $this->likes;
     }
 
-    public function addLike(Activitelike $like): self
+    public function addLike(ActiviteLike $like): self
     {
         if (!$this->likes->contains($like)) {
             $this->likes[] = $like;
@@ -130,7 +130,7 @@ class Transport
         return $this;
     }
 
-    public function removeLike(Activitelike $like): self
+    public function removeLike(ActiviteLike $like): self
     {
         if ($this->likes->removeElement($like)) {
             // set the owning side to null (unless already changed)

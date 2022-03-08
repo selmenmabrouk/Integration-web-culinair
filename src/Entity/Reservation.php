@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\ReservationRepository;
+use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 
@@ -95,24 +96,24 @@ class Reservation
         return $this;
     }
 
-    public function getDateDepart(): ?\DateTimeInterface
+    public function getDateDepart(): ?DateTimeInterface
     {
         return $this->Date_depart;
     }
 
-    public function setDateDepart(\DateTimeInterface $Date_depart): self
+    public function setDateDepart(DateTimeInterface $Date_depart): self
     {
         $this->Date_depart = $Date_depart;
 
         return $this;
     }
 
-    public function getDateArrivee(): ?\DateTimeInterface
+    public function getDateArrivee(): ?DateTimeInterface
     {
         return $this->Date_arrivee;
     }
 
-    public function setDateArrivee(\DateTimeInterface $Date_arrivee): self
+    public function setDateArrivee(DateTimeInterface $Date_arrivee): self
     {
         $this->Date_arrivee = $Date_arrivee;
 

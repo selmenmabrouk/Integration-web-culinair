@@ -24,29 +24,41 @@
 
                     <div class="col-md-7 col-sm-7">
                         <div class="inner-box">
-
                             <div class="box-inner-ellipsis">
                                 <div style="margin: 0px; padding: 0px; border: 0px;">
-                                    <h3 class="entry-title">
-                                        <a href="restaurant-detail.html">{{ activite.nom }}</a>
-                                    </h3>
                                     <div class="entry-content">
-                                        <p>{{ activite.description }}</p>
-
-
-                                        <span class="price"> <strong
-                                                   <p>{{ activite.prixActivite }}$</strong> /per person</span></p>
-                                        <span class="type"> <strong
-                                                   <p>Type d'activite: </strong> </span> {{ activite.typeActivite }}</p>
-                                        <span class="temps"> <strong
-                                                   <p>Temps nécessaire: </strong> </span> {{ activite.temps }}</p>
-                                        <span class="Nombre de participant"> <strong
-                                                   <p>Nombre de participant: </strong> </span> {{ activite.nombreParticipant }}</p>
-
+                                        <h3 class="col-md-10 mrg-0 entry-title">
+                                            <a href="restaurant-detail.html">{{ activite.nom }}</a>
+                                        </h3>
+                                        <a onclick="loadDoc()" href="{{ path('Activite_like', {'id':activite.id}) }}"
+                                           class="col-md-2 btn btn-link js-like-link " style="z-index: 1000">
+                                            {% if app.user and activite.isLikedByUser(app.user) %}
+                                                <i class="fa fa-heart"></i>
+                                            {% else %}
+                                                <i class="fa fa-heart-o"></i>
+                                            {% endif %}
+                                            <span class="js-likes">{{ activite.likes | length }} </span>
+                                        </a>
+                                        <span class="price">
+                                                  <p>{{ activite.description }}</p>
+                                        </span>
+                                        <span class="price">
+                                                   <p><b>{{ activite.prixActivite }}$</b> /per person</p>
+                                        </span>
+                                        <span class="type">
+                                                   <p><b>Type d'activite: </b>
+                                            {{ activite.typeActivite }}</p>
+                                        </span>
+                                        <span class="temps">
+                                                   <p><b>Temps nécessaire: </b>{{ activite.temps }}</p>
+                                        </span>
+                                        <span class="Nombre de participant">
+                                                   <b>Nombre de participant: </b>
+                                        {{ activite.nombreParticipant }}
+                                        </span>
                                     </div>
                                 </div>
                             </div>
-
                             <div class="entry-meta">
                                 <div class="meta-item meta-author">
                                     <div class="hotel-review entry-location">
@@ -71,9 +83,7 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
-
             </article>
         </div>
     {% endfor %}

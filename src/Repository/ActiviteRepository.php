@@ -20,43 +20,25 @@ class ActiviteRepository extends ServiceEntityRepository
         parent::__construct($registry, Activite::class);
     }
 
-
-      /**
+    /**
      * @return Query
-      */
-      public function findAllVisibleQuery(): Query
-      {
-          return $this->findAllVisibleQuery()
-              ->getQuery();
-
-
-      }
-
-
-
-    /*
-    public function findByExampleField($value)
+     */
+    public function findAllVisibleQuery(): Query
     {
-        return $this->createQueryBuilder('a')
-            ->andWhere('a.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('a.id', 'ASC')
+        return $this->findAllVisibleQuery()
+            ->getQuery();
+    }
+
+    public function findByNamePopular(string $activite)
+    {
+        $queryBuilder = $this->createQueryBuilder('activite')
+            ->where('activite.nom LIKE :searchTerm')
+            ->orWhere('activite.description LIKE :searchTerm')
+            ->setParameter('searchTerm', '%' . $activite . '%');
+
+        return $queryBuilder
             ->setMaxResults(10)
             ->getQuery()
-            ->getResult()
-        ;
+            ->getResult();
     }
-    */
-
-    /*
-    public function findOneBySomeField($value): ?Activite
-    {
-        return $this->createQueryBuilder('a')
-            ->andWhere('a.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 }

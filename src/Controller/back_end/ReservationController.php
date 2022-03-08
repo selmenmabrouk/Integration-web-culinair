@@ -35,8 +35,9 @@ class ReservationController extends AbstractController
 
     /**
      * @Route("/{id}",name="Resid")
+     * @throws \Symfony\Component\Serializer\Exception\ExceptionInterface
      */
-    public function Resid(Request $request, $id, NormalizerInterface $Normalizer)
+    public function Resid(Request $request, $id, NormalizerInterface $Normalizer): Response
     {
         $em = $this->getDoctrine()->getManager();
         $reservation = $em->getRepository(Reservation::class)->find($id);
@@ -62,6 +63,7 @@ class ReservationController extends AbstractController
 
     /**
      * @Route("/allReservationJSON", name="all_Reservation")
+     * @throws \Symfony\Component\Serializer\Exception\ExceptionInterface
      */
     public function liste(NormalizerInterface $Normalizer): Response
     {
@@ -75,8 +77,9 @@ class ReservationController extends AbstractController
     /**
      *
      * @route ("/addReserJSON/new",name="addRes")
+     * @throws \Symfony\Component\Serializer\Exception\ExceptionInterface
      */
-    public function addRes(Request $request, NormalizerInterface $Normalizer, $id)
+    public function addRes(Request $request, NormalizerInterface $Normalizer, $id): Response
     {
         $em = $this->getDoctrine()->getManager();
         $reservation = $em->getRepository(Reservation::class)->find($id);
@@ -92,6 +95,6 @@ class ReservationController extends AbstractController
         $em->persist($reservation);
         $em->flush();
         $jsonContent = $Normalizer->normalize($reservation, 'json', ['groups' => 'post:read']);
-        return new Response(json_encode($jsonContent));;
+        return new Response(json_encode($jsonContent));
     }
 }

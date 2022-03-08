@@ -13,7 +13,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/transport")
+ * @Route("/admin/transport")
  */
 class TransportController extends AbstractController
 {
@@ -32,16 +32,6 @@ class TransportController extends AbstractController
         );
         return $this->render('back_end/transport/index.html.twig', [
             'transports' => $transport,
-        ]);
-    }
-
-    /**
-     * @Route("/now", name="transport_front", methods={"GET"})
-     */
-    public function transport_front(TransportRepository $transportRepository): Response
-    {
-        return $this->render('back_end/transport/TransportFront.html.twig', [
-            'transport' => $transportRepository->findAll(),
         ]);
     }
 
