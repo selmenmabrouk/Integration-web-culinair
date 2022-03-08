@@ -3,12 +3,9 @@
 namespace App\Controller\front_end;
 
 use App\Entity\Restaurant;
-use App\Form\RestaurantType;
-use CMEN\GoogleChartsBundle\GoogleCharts\Charts\PieChart;
-use Snipe\BanBuilder\CensorWords;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
 
 class RestaurantController extends AbstractController
 {

@@ -41,8 +41,8 @@
         <div class="collapse navbar-collapse" id="navbar-menu">
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown dash-link"><a href="#" class="dropdown-toggle"><img
-                                src="{{ asset ('img/user-3.jpg') }}" class="img-responsive avatar" alt=""/>Hi,
-                        Admin</a>
+                                src="{{ asset ('uploads/user/'~app.user.image) }}" height="30" class="img-rounded" alt=""/>Hi,
+                        {{ app.user.prenom }} {{ app.user.nom }}</a>
                     <ul class="dropdown-menu left-nav">
                         <li><a href="{{ path("app_logout") }}">Log Out</a></li>
                     </ul>
@@ -57,9 +57,9 @@
 <section class="dashboard add-0 mrg-top-50 mrg-bot-40">
     <div class="container-fluid">
         <div class="row mrg-20">
-            <div class="col-lg-2 col-md-2 col-sm-3 dashboard-bg">
+            <div class="col-lg-2 col-md-2 col-sm-3 dashboard-bg" style="min-height: auto; height: auto">
                 <!-- /. NAV TOP  -->
-                <nav class="navbar navbar-side">
+                <nav class="navbar navbar-side mrg-0">
                     <!-- Start Logo Header Navigation -->
                     <div class="navbar-header">
                         <button type="button" class="navbar-toggle" data-toggle="collapse"
@@ -71,11 +71,13 @@
                     <div class="collapse sidebar-collapse" id="dashboard-menu">
                         <div class="profile-wrapper">
                             <div class="profile-wrapper-thumb">
-                                <img src="{{ asset ('img/user-3.jpg') }}" class="img-responsive img-circle"
-                                     alt=""/>
+                                <img src="{{ asset ('uploads/user/'~app.user.image) }}"
+                                     class="img-circle" width="100" height="100"
+                                     style="width: 100%; height: 100%; object-fit: contain; "/>
                                 <span class="dashboard-user-status bg-success"></span>
                             </div>
-                            <h4>Admin</h4>
+                            <h4>{{ app.user.prenom }} {{ app.user.nom }}</h4>
+                            <p>{{ app.user.email }}</p>
                         </div>
                         <ul class="nav" id="main-menu">
                             <li>
@@ -112,6 +114,18 @@
                                 <a href="{{ path('reservation_index_admin') }}">
                                     <i class="fa fa-sticky-note" aria-hidden="true"></i>
                                     Reservations
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ path('affichRestaurantAdmin') }}">
+                                    <i class="fa fa-building" aria-hidden="true"></i>
+                                    Restaurants
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ path('affichPlatAdmin') }}">
+                                    <i class="fa fa-circle" aria-hidden="true"></i>
+                                    Plats
                                 </a>
                             </li>
                         </ul>

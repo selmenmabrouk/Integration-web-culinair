@@ -7,6 +7,7 @@ use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Serializer\Exception\ExceptionInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -35,7 +36,7 @@ class ReservationController extends AbstractController
 
     /**
      * @Route("/{id}",name="Resid")
-     * @throws \Symfony\Component\Serializer\Exception\ExceptionInterface
+     * @throws ExceptionInterface
      */
     public function Resid(Request $request, $id, NormalizerInterface $Normalizer): Response
     {
@@ -63,7 +64,7 @@ class ReservationController extends AbstractController
 
     /**
      * @Route("/allReservationJSON", name="all_Reservation")
-     * @throws \Symfony\Component\Serializer\Exception\ExceptionInterface
+     * @throws ExceptionInterface
      */
     public function liste(NormalizerInterface $Normalizer): Response
     {
@@ -77,7 +78,7 @@ class ReservationController extends AbstractController
     /**
      *
      * @route ("/addReserJSON/new",name="addRes")
-     * @throws \Symfony\Component\Serializer\Exception\ExceptionInterface
+     * @throws ExceptionInterface
      */
     public function addRes(Request $request, NormalizerInterface $Normalizer, $id): Response
     {

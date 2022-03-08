@@ -8,6 +8,7 @@ parameters:
   guide_directory: '%kernel.project_dir%/public/uploads/guide'
   restaurant_directory: '%kernel.project_dir%/public/uploads/restaurant'
   plat_directory: '%kernel.project_dir%/public/uploads/plat'
+  user_directory: '%kernel.project_dir%/public/uploads/user'
   stripe_public_key: pk_test_xxxxxxxxxxxxxxxxxxxxxxxx
   stripe_secret_key: sk_test_xxxxxxxxxxxxxxxxxxxxxxxx
 
