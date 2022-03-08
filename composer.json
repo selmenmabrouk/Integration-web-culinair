@@ -57,7 +57,9 @@
     "symfony/security-csrf": "5.4.*",
     "symfony/swiftmailer-bundle": "^3.5",
     "symfony/twig-bridge": "5.4.*",
-    "twilio/sdk": "^6.35"
+    "twilio/sdk": "^6.35",
+    "vonage/client": "^2.4",
+    "snipe/banbuilder": "dev-master"
   },
   "config": {
     "allow-plugins": {
