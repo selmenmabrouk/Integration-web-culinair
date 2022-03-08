@@ -2,34 +2,39 @@
 
 namespace App\Controller\front_end;
 
+use Stripe\Checkout\Session;
+use Stripe\Exception\ApiErrorException;
+use Stripe\Stripe;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/payment" , name = "payment")
+ * @Route("/payment")
  */
 class PaymentController extends AbstractController
 {
 
     /**
-     * @Route("/paymentpayment", name="payment")
+     * @Route("/", name="payment")
      */
     public function index(): Response
     {
-        return $this->render('front_end/payment/index', [
+        return $this->render('front_end/payment/index.html.twig', [
             'controller_name' => 'PaymentController',
         ]);
     }
 
     /**
-     * @Route("/checkout", name="checkout")
+     * @Route("/checkout", name="stripe_checkout")
+     * @throws ApiErrorException
      */
-    public function checkout($stripeSK)
+    public function checkout($stripeSK): RedirectResponse
     {
-        \Stripe\Stripe::setApiKey($stripeSK);
-        $session = \Stripe\Checkout\Session::create([
+        Stripe::setApiKey($stripeSK);
+        $session = Session::create([
             'line_items' => [[
                 'price_data' => [
                     'currency' => 'usd',

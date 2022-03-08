@@ -42,7 +42,7 @@ class GuideType extends AbstractType
                     ])
                 ],
             ])
-            ->add('valider', SubmitType::class);;
+            ->add('valider', SubmitType::class);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

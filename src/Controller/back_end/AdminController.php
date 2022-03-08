@@ -40,7 +40,7 @@ class AdminController extends AbstractController
         $dompdf->loadHtml($html);
 
         // (Optional) Setup the paper size and orientation 'portrait' or 'portrait'
-        $dompdf->setPaper('A4', 'portrait');
+        $dompdf->setPaper('A4');
 
         // Render the HTML as PDF
         $dompdf->render();

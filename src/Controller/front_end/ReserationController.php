@@ -2,7 +2,6 @@
 
 namespace App\Controller\front_end;
 
-use App\Controller\Symfony;
 use App\Entity\Reservation;
 use App\Form\ReservationType;
 use App\Repository\EvenementRepository;
@@ -16,23 +15,8 @@ use Symfony\Component\Routing\Annotation\Route;
 class ReserationController extends AbstractController
 {
     /**
-     * @Route("/reseration", name="reseration")
-     */
-    public function index(): Response
-    {
-
-        return $this->render('front_end/reseration/index.html.twig', [
-            'controller_name' => 'ReserationController',
-        ]);
-    }
-
-
-
-
-    /**
      * @Route("/Reservation_Detail/{id}" , name = "reservation_detail")
      */
-    //ReservationDetail
     public function addReservation(Request $request, $id, EvenementRepository $rep): Response
     {
 
@@ -55,40 +39,6 @@ class ReserationController extends AbstractController
             'data' => $event,
             'formA' => $form->createView()
         ]);
-    }
-
-    /**
-     * @Route("/affichreservation", name="affichreservation")
-     */
-    public function AfficherReservation(Request $request, PaginatorInterface $paginator): Response
-    {
-        $reservation = $this->getDoctrine()->getRepository(reservation::class)->findAll();
-        $reservation = $paginator->paginate(
-            $reservation, // Requête contenant les données à paginer (ici nos articles)
-            $request->query->getInt('page', 1), // Numéro de la page en cours, passé dans l'URL, 1 si aucune page
-            6 // Nombre de résultats par page
-        );
-
-        return $this->render('front_end/reservation/AfficherReservationAdmin.html.twig', [
-            'controller_name' => 'ReserationController',
-            "Reservation" => $reservation,
-
-        ]);
-    }
-
-    /**
-     * @Route("/deletereservation/{id}", name="deletereservation")
-     */
-    public function deleteReservation(int $id): Response
-    {
-        $entityManager = $this->getDoctrine()->getManager();
-        $Reservation = $entityManager->getRepository(Reservation::class)->find($id);
-        $entityManager->remove($Reservation);
-        $entityManager->flush();
-        $this->addFlash('success', 'L"action a été effectué');
-
-
-        return $this->redirectToRoute("affichreservation");
     }
 
     /**
@@ -121,6 +71,20 @@ class ReserationController extends AbstractController
         return $this->render('front_end/reservation/ModifierReservation.html.twig', [
             "form_title" => "Modifier une Reservation",
             "form_Reservation" => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/generate/{id}", name="generate")
+     */
+    public function generate(string $id): Response
+    {
+        //  $response = new QrCodeResponse($result);
+
+        $qrCode = "http://chart.apis.google.com/chart?cht=qr&chs=150x150&chl= Votre reservation à été effectuer à cette date : " . $id;
+
+        return $this->render('front_end/reservation/generate.html.twig', [
+            'qrCode' => $qrCode,
         ]);
     }
 }
