@@ -6,16 +6,16 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>{% block title %}Tour & Travel Bootstrap Template | Themez Hub{% endblock %}</title>
+    <title>{% block title %}Culin'air{% endblock %}</title>
 
     <!-- Plugins CSS -->
-    {% block stylesheets %}
-        <link rel="stylesheet" href="{{ asset('plugins/css/plugins.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('/plugins/css/plugins.css') }}"/>
 
-        <!-- Custom style -->
-        <link href="{{ asset ('css/style.css') }}" rel="stylesheet"/>
-        <link href="{{ asset ('css/responsiveness.css') }}" rel="stylesheet"/>
-        <link id="jssDefault" rel="stylesheet" href="{{ asset ('css/skins/default.css') }}"/>
+    <!-- Custom style -->
+    <link href="{{ asset ('css/style.css') }}" rel="stylesheet"/>
+    <link href="{{ asset ('css/responsiveness.css') }}" rel="stylesheet"/>
+    <link id="jssDefault" rel="stylesheet" href="{{ asset ('css/skins/default.css') }}"/>
+    {% block stylesheets %}
     {% endblock %}
 
 
@@ -31,8 +31,8 @@
                 <i class="fa fa-bars"></i>
             </button>
             <a class="navbar-brand" href="{{ path('accueil') }}">
-                <img src="{{ asset('img/culinaira.png') }}" class="logo logo-display" alt=""/>
-                <img src="{{ asset('img/culinaira.png') }}" class="logo logo-scrolled" alt=""/>
+                <img src="{{ asset('/img/culinaira.png') }}" class="logo logo-display" alt=""/>
+                <img src="{{ asset('/img/culinaira.png') }}" class="logo logo-scrolled" alt=""/>
             </a>
         </div>
         <!-- End Logo Header Navigation -->
@@ -45,6 +45,9 @@
                 </li>
                 <li>
                     <a href="{{ path('activite_front') }}">Activités</a>
+                </li>
+                <li>
+                    <a href="{{ path('guide_front') }}">Guides</a>
                 </li>
             </ul>
 
@@ -95,17 +98,17 @@
     <div class="slideshow-container">
         <!-- slideshow-item -->
         <div class="slideshow-item">
-            <div class="bg" data-bg="img/banner-6.jpg"></div>
+            <div class="bg" data-bg="/img/banner-6.jpg"></div>
         </div>
         <!--  slideshow-item end  -->
         <!-- slideshow-item -->
         <div class="slideshow-item">
-            <div class="bg" data-bg="img/banner-7.jpg"></div>
+            <div class="bg" data-bg="/img/banner-7.jpg"></div>
         </div>
         <!--  slideshow-item end  -->
         <!-- slideshow-item -->
         <div class="slideshow-item">
-            <div class="bg" data-bg="img/banner-8.jpg"></div>
+            <div class="bg" data-bg="/img/banner-8.jpg"></div>
         </div>
         <!--  slideshow-item end  -->
     </div>
@@ -469,7 +472,7 @@
         <div class="modal-content" id="myModalLabel1">
             <div class="modal-body">
                 <div class="text-center">
-                    <img src="{{ asset('img/culinaira.png') }}" class="img-responsive" alt=""/>
+                    <img src="{{ asset('/img/culinaira.png') }}" class="img-responsive" alt=""/>
                 </div>
 
                 <!-- Nav tabs -->
@@ -587,27 +590,27 @@
 
 {% block javascripts %}
     <!-- =================== START JAVASCRIPT ================== -->
-    <script src="{{ asset('plugins/js/jquery.min.js') }}"></script>
-    <script src="{{ asset('plugins/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('plugins/js/viewportchecker.js') }}"></script>
-    <script src="{{ asset('plugins/js/bootsnav.js') }}"></script>
-    <script src="{{ asset('plugins/js/slick.min.js') }}"></script>
-    <script src="{{ asset('plugins/js/jquery.nice-select.min.js') }}"></script>
-    <script src="{{ asset('plugins/js/jquery.fancybox.min.js') }}"></script>
-    <script src="{{ asset('plugins/js/jquery.downCount.js') }}"></script>
-    <script src="{{ asset('plugins/js/freshslider.1.0.0.js') }}"></script>
-    <script src="{{ asset('plugins/js/moment.min.js') }}"></script>
-    <script src="{{ asset('plugins/js/daterangepicker.js') }}"></script>
-    <script src="{{ asset('plugins/js/wysihtml5-0.3.0.js') }}"></script>
-    <script src="{{ asset('plugins/js/bootstrap-wysihtml5.js') }}"></script>
+    <script src="{{ asset('/plugins/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('/plugins/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('/plugins/js/viewportchecker.js') }}"></script>
+    <script src="{{ asset('/plugins/js/bootsnav.js') }}"></script>
+    <script src="{{ asset('/plugins/js/slick.min.js') }}"></script>
+    <script src="{{ asset('/plugins/js/jquery.nice-select.min.js') }}"></script>
+    <script src="{{ asset('/plugins/js/jquery.fancybox.min.js') }}"></script>
+    <script src="{{ asset('/plugins/js/jquery.downCount.js') }}"></script>
+    <script src="{{ asset('/plugins/js/freshslider.1.0.0.js') }}"></script>
+    <script src="{{ asset('/plugins/js/moment.min.js') }}"></script>
+    <script src="{{ asset('/plugins/js/daterangepicker.js') }}"></script>
+    <script src="{{ asset('/plugins/js/wysihtml5-0.3.0.js') }}"></script>
+    <script src="{{ asset('/plugins/js/bootstrap-wysihtml5.js') }}"></script>
 
     <!-- Dashboard Js -->
-    <script src="{{ asset('plugins/js/jquery.slimscroll.min.js') }}"></script>
-    <script src="{{ asset('plugins/js/jquery.metisMenu.js') }}"></script>
-    <script src="{{ asset('plugins/js/jquery.easing.min.js') }}"></script>
+    <script src="{{ asset('/plugins/js/jquery.slimscroll.min.js') }}"></script>
+    <script src="{{ asset('/plugins/js/jquery.metisMenu.js') }}"></script>
+    <script src="{{ asset('/plugins/js/jquery.easing.min.js') }}"></script>
 
     <!-- Custom Js -->
-    <script src="{{ asset('js/custom.js') }}"></script>
+    <script src="{{ asset('/js/custom.js') }}"></script>
     <!--Start of Tawk.to Script-->
     <script type="text/javascript">
         var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();

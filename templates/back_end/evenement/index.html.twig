@@ -46,7 +46,8 @@
                             <a style=color:red href="{{ path('evenement_delete',{'id':ee.id}) }}"> <input class="btn btn-danger " type="submit" value="Supprimer"/>
                             </a>
                             {% if ee.enable == 1 %} <a href="{{ path ('masquer_evenement', {'id' : ee.id})}}" class="btn btn-success text-white" href="#">Afficher</a>
-                            {% else %}<a href="{{ path ('afficher_evenement', {'id' : ee.id})}}" class="btn btn-success text-white" href="#">Masquer</a> {% endif %}
+                            {% else %}<a href="{{ path ('afficher_evenement', {'id' : ee.id})}}" class="btn btn-success text-white"
+                                         href="#">Masquer</a> {% endif %}
                         </td>
 
                     </tr>

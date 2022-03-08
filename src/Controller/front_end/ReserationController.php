@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\front_end;
 
+use App\Controller\Symfony;
 use App\Entity\Reservation;
 use App\Form\ReservationType;
 use App\Repository\EvenementRepository;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\HttpFoundation\Request;
-use Knp\Component\Pager\PaginatorInterface;
-use App\Repository\ReservationRepository;
 
 
 class ReserationController extends AbstractController
@@ -21,7 +21,7 @@ class ReserationController extends AbstractController
     public function index(): Response
     {
 
-        return $this->render('reseration/index.html.twig', [
+        return $this->render('front_end/reseration/index.html.twig', [
             'controller_name' => 'ReserationController',
         ]);
     }
@@ -51,7 +51,7 @@ class ReserationController extends AbstractController
 
             ////return $this->render( hot path mtaa page mteaak bech thezek il paiement !!);
         }
-        return $this->render('reservation/reservation_detail.html.twig', [
+        return $this->render('front_end/reservation/reservation_detail.html.twig', [
             'data' => $event,
             'formA' => $form->createView()
         ]);
@@ -69,7 +69,7 @@ class ReserationController extends AbstractController
             6 // Nombre de résultats par page
         );
 
-        return $this->render('reservation/AfficherReservationAdmin.html.twig', [
+        return $this->render('front_end/reservation/AfficherReservationAdmin.html.twig', [
             'controller_name' => 'ReserationController',
             "Reservation" => $reservation,
 
@@ -109,7 +109,6 @@ class ReserationController extends AbstractController
             //  $file = $guide->getPhoto();
 
 
-
             // updates the 'brochure' property to store the PDF file name
             // instead of its contents
             //$Reservation->setPhoto($fileName);
@@ -119,7 +118,7 @@ class ReserationController extends AbstractController
             return $this->redirectToRoute("affichreserationAdmin");
         }
 
-        return $this->render("reservation/ModifierReservation.html.twig", [
+        return $this->render('front_end/reservation/ModifierReservation.html.twig', [
             "form_title" => "Modifier une Reservation",
             "form_Reservation" => $form->createView(),
         ]);

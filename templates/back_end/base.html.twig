@@ -10,6 +10,7 @@
     <title>{% block title %}Culin'air{% endblock %}</title>
 
     {% block stylesheets %}
+        <link href="{{ asset('css/elegant-icons-style.css') }}" rel="stylesheet"/>
         <!-- Plugins CSS -->
         <link rel="stylesheet" href="{{ asset ('plugins/css/plugins.css') }}">
         <!-- Custom style -->
@@ -99,6 +100,12 @@
                                 <a href="{{ path('transport_index') }}">
                                     <i class="fa fa-car" aria-hidden="true"></i>
                                     Transport
+                                </a>
+                            </li>
+                            <li class="log-off">
+                                <a href="{{ path('guide_index_admin') }}">
+                                    <i class="fa fa-book" aria-hidden="true"></i>
+                                    Guide
                                 </a>
                             </li>
                         </ul>

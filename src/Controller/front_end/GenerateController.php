@@ -1,19 +1,13 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\front_end;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Endroid\QrCode\QrCode;
-use Endroid\QrCode\Builder\BuilderInterface;
-use Endroid\QrCodeBundle\Response\QrCodeResponse;
-
 
 class GenerateController extends AbstractController
 {
-
-
     /**
      * @Route("/generate/{id}", name="generate")
      */
@@ -24,7 +18,7 @@ class GenerateController extends AbstractController
         $qrCode = "http://chart.apis.google.com/chart?cht=qr&chs=150x150&chl= Votre reservation à été effectuer à cette date : " . $id;
 
 
-        return $this->render('generate/index.html.twig', [
+        return $this->render('front_end/reservation/index.html.twig', [
             'qrCode' => $qrCode,
 
         ]);

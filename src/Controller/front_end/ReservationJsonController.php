@@ -1,19 +1,13 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\front_end;
 
 use App\Entity\Reservation;
-//use App\Form\ReservationType;
-use JsonSerializable;
-use Normalizer as GlobalNormalizer;
-use Serializable;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
-// use Symfony\Component\Serializer\Normalizer\NormalizableInterface;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-use Symfony\Polyfill\Intl\Normalizer\Normalizer;
+use Symfony\Component\Routing\Annotation\Route;
 
 class ReservationJsonController extends AbstractController
 {
@@ -22,7 +16,7 @@ class ReservationJsonController extends AbstractController
      */
     public function index(): Response
     {
-        return $this->render('reservation_json/index.html.twig', [
+        return $this->render('front_end/reservation/index_json.html.twig', [
             'controller_name' => 'ReservationJsonController',
         ]);
     }
@@ -35,7 +29,7 @@ class ReservationJsonController extends AbstractController
         $em = $this->getDoctrine()->getManager();
         $reservation = $em->getRepository(Reservation::class)->find($id);
         $jsonContent = $Normalizer->normalize($reservation, 'json', ['groups' => 'post:read']);
-        return $this->render('reservation_json/index.html.twig', ['data' => $jsonContent,]);
+        return $this->render('front_end/reservation/index_json.html.twig', ['data' => $jsonContent,]);
         return new Response(json_encode($jsonContent));
     }
 
@@ -48,7 +42,7 @@ class ReservationJsonController extends AbstractController
         $repository = $this->getDoctrine()->getRepository(Reservation::class);
         $reservation = $repository->findAll();
         $jsonContent = $Normalizer->normalize($reservation, 'json', ['groups' => 'post:read']);
-        return $this->render('reservation\allReservationJSON.html.twig', ['data' => $jsonContent,]);
+        return $this->render('front_end/reservation/allReservationJSON.html.twig', ['data' => $jsonContent,]);
         return new Response(json_encode($jsonContent));
     }
 

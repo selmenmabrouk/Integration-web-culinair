@@ -1,247 +1,8 @@
-{% extends 'base.html.twig' %}
+{% extends 'front_end/base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
 
 {% block body %}
-	<section class="main-banner scroll-con-sec hero-section" data-scrollax-parent="true" id="sec1">
-		<div
-			class="slideshow-container">
-			<!-- slideshow-item -->
-			<div class="slideshow-item">
-				<div class="bg" data-bg="assets/img/banner-6.jpg"></div>
-			</div>
-			<!--  slideshow-item end  -->
-			<!-- slideshow-item -->
-			<div class="slideshow-item">
-				<div class="bg" data-bg="assets/img/banner-7.jpg"></div>
-			</div>
-			<!--  slideshow-item end  -->
-			<!-- slideshow-item -->
-			<div class="slideshow-item">
-				<div class="bg" data-bg="assets/img/banner-8.jpg"></div>
-			</div>
-			<!--  slideshow-item end  -->
-		</div>
-		<div class="overlay"></div>
-		<div class="hero-section-wrap fl-wrap multi-option-booking">
-			<div class="container">
-				<div class="intro-item fl-wrap">
-					<div class="padd-15">
-						<h1>voyagez et dégustez</h1>
-						<div
-							class="tab" role="tabpanel">
-							<!-- Nav tabs -->
-							<ul class="nav nav-tabs" role="tablist">
-								<li role="presentation" class="active">
-									<a href="#Tour" aria-controls="home" role="tab" data-toggle="tab">
-										<i class="fa fa-globe"></i>voyages</a>
-								</li>
-								<li role="presentation">
-									<a href="#Hotel" aria-controls="profile" role="tab" data-toggle="tab">
-										<i class="fa fa-hotel"></i>Hotel</a>
-								</li>
-								<li role="presentation">
-									<a href="#Flight" aria-controls="messages" role="tab" data-toggle="tab">
-										<i class="fa fa-fighter-jet"></i>Activities</a>
-								</li>
-								<li role="presentation">
-									<a href="#Restaurant" aria-controls="messages" role="tab" data-toggle="tab">
-										<i class="fa fa-coffee"></i>Restaurant</a>
-								</li>
-							</ul>
-							<!-- Tab panes -->
-						</div>
-					</div>
-					<div
-						class="tab-content tabs">
-						<!-- Tour Book Form -->
-						<div role="tabpanel" class="tab-pane fade in active" id="Tour">
-							<form>
-								<fieldset class="home-form-1">
-									<div class="col-md-3 col-sm-3 padd-0">
-										<input type="text" class="form-control br-1" placeholder="ville, pays"/>
-									</div>
-
-									<div class="col-md-3 col-sm-3 padd-0">
-										<input type="text" name="book-date" id="book-date" class="form-control br-1" value="When..."/>
-									</div>
-
-									<div class="col-md-2 col-sm-2 padd-0">
-										<div class="sl-box">
-											<select class="wide form-control br-1">
-												<option data-display="Adultes">Adultes</option>
-												<option value="1">01</option>
-												<option value="2">02</option>
-												<option value="3">03</option>
-												<option value="4">04</option>
-											</select>
-										</div>
-									</div>
-
-									<div class="col-md-2 col-sm-2 padd-0">
-										<div class="sl-box">
-											<select class="wide form-control br-1">
-												<option data-display="Enfants">Enfants</option>
-												<option value="1">01</option>
-												<option value="2">02</option>
-												<option value="3">03</option>
-												<option value="4">04</option>
-											</select>
-										</div>
-									</div>
-
-									<div class="col-md-2 col-sm-2 padd-0">
-										<button type="submit" class="btn theme-btn cl-white seub-btn">
-											Chercher
-										</button>
-									</div>
-								</fieldset>
-							</form>
-						</div>
-
-						<!-- Hotel Book Form -->
-						<div role="tabpanel" class="tab-pane fade in" id="Hotel">
-							<form>
-								<fieldset class="home-form-1">
-									<div class="col-md-3 col-sm-3 padd-0">
-										<input type="text" class="form-control br-1" placeholder="ville, pays"/>
-									</div>
-
-									<div class="col-md-2 col-sm-2 padd-0">
-										<select class="wide form-control br-1">
-											<option data-display="Adultes">Adultes</option>
-											<option value="1">01</option>
-											<option value="2">02</option>
-											<option value="3">03</option>
-											<option value="4">04</option>
-										</select>
-									</div>
-
-									<div class="col-md-2 col-sm-2 padd-0">
-										<div class="sl-box">
-											<select class="wide form-control br-1">
-												<option data-display="Enfants">Enfants</option>
-												<option value="1">01</option>
-												<option value="2">02</option>
-												<option value="3">03</option>
-												<option value="4">04</option>
-											</select>
-										</div>
-									</div>
-
-									<div class="col-md-3 col-sm-3 padd-0">
-										<input type="text" name="De" class="form-control br-1" value="a"/>
-									</div>
-
-									<div class="col-md-2 col-sm-2 padd-0">
-										<button type="submit" class="btn theme-btn cl-white seub-btn">
-											Chercher
-										</button>
-									</div>
-								</fieldset>
-							</form>
-						</div>
-
-						<!-- Flight Book Form -->
-						<div role="tabpanel" class="tab-pane fade in" id="Flight">
-							<form>
-								<fieldset class="home-form-1">
-									<div class="col-md-2 col-sm-2 padd-0">
-										<input type="text" class="form-control br-1" placeholder="Départ.."/>
-									</div>
-
-									<div class="col-md-2 col-sm-2 padd-0">
-										<input type="text" class="form-control br-1" value="Aller a.."/>
-									</div>
-
-									<div class="col-md-2 col-sm-2 padd-0">
-										<input type="text" name="flight-book" id="flight-book" class="form-control br-1" value="Quand.."/>
-									</div>
-
-									<div class="col-md-2 col-sm-2 padd-0">
-										<div class="sl-box">
-											<select class="wide form-control br-1">
-												<option data-display="Adultes">Adultes</option>
-												<option value="1">01</option>
-												<option value="2">02</option>
-												<option value="3">03</option>
-												<option value="4">04</option>
-											</select>
-										</div>
-									</div>
-
-									<div class="col-md-2 col-sm-2 padd-0">
-										<div class="sl-box">
-											<select class="wide form-control br-1">
-												<option data-display="Enfants">Enfants</option>
-												<option value="1">01</option>
-												<option value="2">02</option>
-												<option value="3">03</option>
-												<option value="4">04</option>
-											</select>
-										</div>
-									</div>
-
-									<div class="col-md-2 col-sm-2 padd-0">
-										<button type="submit" class="btn theme-btn cl-white seub-btn">
-											Chercher
-										</button>
-									</div>
-								</fieldset>
-							</form>
-						</div>
-
-						<!-- Restaurant Book Form -->
-						<div role="tabpanel" class="tab-pane fade in" id="Restaurant">
-							<form>
-								<fieldset class="home-form-1">
-									<div class="col-md-3 col-sm-3 padd-0">
-										<input type="text" class="form-control br-1" placeholder="Ville, pays"/>
-									</div>
-
-									<div class="col-md-2 col-sm-2 padd-0">
-										<div class="sl-box">
-											<select class="wide form-control br-1">
-												<option data-display="Personne">Personne</option>
-												<option value="1">01</option>
-												<option value="2">02</option>
-												<option value="3">03</option>
-												<option value="4">04</option>
-											</select>
-										</div>
-									</div>
-
-									<div class="col-md-2 col-sm-2 padd-0">
-										<div class="sl-box">
-											<select class="wide form-control br-1">
-												<option data-display="Enfants">Enfants</option>
-												<option value="1">01</option>
-												<option value="2">02</option>
-												<option value="3">03</option>
-												<option value="4">04</option>
-											</select>
-										</div>
-									</div>
-
-									<div class="col-md-3 col-sm-3 padd-0">
-										<input type="text" name="Départ" class="form-control br-1" value="Arrivé"/>
-									</div>
-
-									<div class="col-md-2 col-sm-2 padd-0">
-										<button type="submit" class="btn theme-btn cl-white seub-btn">
-											Chercher
-										</button>
-									</div>
-								</fieldset>
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- ======================= Slide Multiple Booking End Banner ===================== -->
-	<div class="clearfix"></div>
-
-	<!-- ====================== Popular Destinations ================= -->
 	<section>
 		<div class="container">
 			<div class="row">
@@ -262,13 +23,13 @@
 						<article class="destination-box style-1">
 							<div class="destination-box-image">
 								<figure>
-									<a href="destination-detail.html">
-										<img src="{{ asset('uploads/guide/'~e.image) }}" class="img-responsive listing-box-img" alt=""/>
+									<a href="#">
+										<img src="{{ asset('/uploads/') }}{{ e.image }}" class="img-responsive listing-box-img" alt=""/>
 										<div class="list-overlay"></div>
 									</a>
 									<div class="discount-flick"></div>
 									<h4 class="destination-place">
-										<a href="destination-detail.html">{{e.nom}}
+										<a href="#">{{e.nom}}
 										</a>
 									</h4>
 									<a href="#" class="list-like left">
@@ -311,8 +72,6 @@
 					</div>
 
 				{% endfor %}
-
-
 			</div>
 		</div>
 	</section>
@@ -339,7 +98,7 @@
 						<div class="guides-container">
 							<div class="guides-box">
 								<div class="guides-img-box">
-									<img src="{{ asset('uploads/guide/'~g.Photo) }}" class="img-responsive" alt=""/>
+									<img src="{{ asset('/uploads/guide/'~g.Photo) }}" class="img-responsive" alt=""/>
 								</div>
 								<div class="guider-detail">
 									<h4>{{ g.Nom }}
@@ -375,7 +134,7 @@
 				<div class="col-md-4 col-sm-4">
 					<div class="work-process">
 						<div class="process-img">
-							<img src="assets/img/tour-1.png" class="img-responsive" alt=""/>
+							<img src="{{ asset("img/tour-1.png") }}" class="img-responsive" alt=""/>
 							<span class="process-num">01</span>
 						</div>
 						<h4>Choose a Destination & Guide</h4>
@@ -388,7 +147,7 @@
 				<div class="col-md-4 col-sm-4">
 					<div class="work-process">
 						<div class="process-img">
-							<img src="assets/img/tour-2.png" class="img-responsive" alt=""/>
+							<img src="{{ asset("img/tour-2.png") }}" class="img-responsive" alt=""/>
 							<span class="process-num">02</span>
 						</div>
 						<h4>Choose your guide & Customize</h4>
@@ -401,7 +160,7 @@
 				<div class="col-md-4 col-sm-4">
 					<div class="work-process">
 						<div class="process-img">
-							<img src="assets/img/tour-3.png" class="img-responsive" alt=""/>
+							<img src="{{ asset("img/tour-3.png") }}" class="img-responsive" alt=""/>
 							<span class="process-num">03</span>
 						</div>
 						<h4>Book Your Guide Online</h4>
@@ -437,7 +196,7 @@
 							<div class="tour-box-image">
 								<figure>
 									<a href="tour-detail.html">
-										<img src="assets/img/tour/tour-4.jpg" class="img-responsive listing-box-img" alt=""/>
+										<img src="{{ asset("img/tour/tour-4.jpg") }}" class="img-responsive listing-box-img" alt=""/>
 										<div class="list-overlay"></div>
 										<div class="entry-bookmark">
 											<a href="#">
@@ -466,7 +225,7 @@
 									<div class="coauthors">
 										<span class="vcard author">
 											<span class="fn">
-												<a href="#"><img alt="" src="assets/img/user-4.jpg" class="avatar avatar-24" height="24" width="24"/>Lisa Scholfield</a>
+												<a href="#"><img alt="" src="{{ asset("img/user-4.jpg") }}" class="avatar avatar-24" height="24" width="24"/>Lisa Scholfield</a>
 											</span>
 										</span>
 									</div>
@@ -506,7 +265,7 @@
 							<div class="tour-box-image">
 								<figure>
 									<a href="tour-detail.html">
-										<img src="assets/img/tour/tour-5.jpg" class="img-responsive listing-box-img" alt=""/>
+										<img src="{{ asset("img/tour/tour-5.jpg") }}" class="img-responsive listing-box-img" alt=""/>
 										<div class="list-overlay"></div>
 										<div class="entry-bookmark">
 											<a href="#">
@@ -535,7 +294,7 @@
 									<div class="coauthors">
 										<span class="vcard author">
 											<span class="fn">
-												<a href="#"><img alt="" src="assets/img/user-5.jpg" class="avatar avatar-24" height="24" width="24"/>Lisa Scholfield</a>
+												<a href="#"><img alt="" src="{{ asset("img/user-5.jpg") }}" class="avatar avatar-24" height="24" width="24"/>Lisa Scholfield</a>
 											</span>
 										</span>
 									</div>
@@ -575,7 +334,7 @@
 							<div class="tour-box-image">
 								<figure>
 									<a href="tour-detail.html">
-										<img src="assets/img/tour/tour-6.jpg" class="img-responsive listing-box-img" alt=""/>
+										<img src="{{ asset("img/tour/tour-6.jpg") }}" class="img-responsive listing-box-img" alt=""/>
 										<div class="list-overlay"></div>
 										<div class="entry-bookmark">
 											<a href="#">
@@ -604,7 +363,7 @@
 									<div class="coauthors">
 										<span class="vcard author">
 											<span class="fn">
-												<a href="#"><img alt="" src="assets/img/user-6.jpg" class="avatar avatar-24" height="24" width="24"/>Lisa Scholfield</a>
+												<a href="#"><img alt="" src="{{ asset("img/user-6.jpg") }}" class="avatar avatar-24" height="24" width="24"/>Lisa Scholfield</a>
 											</span>
 										</span>
 									</div>
@@ -644,7 +403,7 @@
 							<div class="tour-box-image">
 								<figure>
 									<a href="tour-detail.html">
-										<img src="assets/img/tour/tour-2.jpg" class="img-responsive listing-box-img" alt=""/>
+										<img src="{{ asset("img/tour/tour-2.jpg") }}" class="img-responsive listing-box-img" alt=""/>
 										<div class="list-overlay"></div>
 										<div class="entry-bookmark">
 											<a href="#">
@@ -673,7 +432,7 @@
 									<div class="coauthors">
 										<span class="vcard author">
 											<span class="fn">
-												<a href="#"><img alt="" src="assets/img/user-7.jpg" class="avatar avatar-24" height="24" width="24"/>Lisa Scholfield</a>
+												<a href="#"><img alt="" src="{{ asset("img/user-7.jpg") }}" class="avatar avatar-24" height="24" width="24"/>Lisa Scholfield</a>
 											</span>
 										</span>
 									</div>
@@ -713,7 +472,7 @@
 							<div class="tour-box-image">
 								<figure>
 									<a href="tour-detail.html">
-										<img src="assets/img/tour/tour-7.jpg" class="img-responsive listing-box-img" alt=""/>
+										<img src="{{ asset("img/tour/tour-7.jpg") }}" class="img-responsive listing-box-img" alt=""/>
 										<div class="list-overlay"></div>
 										<div class="entry-bookmark">
 											<a href="#">
@@ -742,7 +501,7 @@
 									<div class="coauthors">
 										<span class="vcard author">
 											<span class="fn">
-												<a href="#"><img alt="" src="assets/img/user-8.jpg" class="avatar avatar-24" height="24" width="24"/>Lisa Scholfield</a>
+												<a href="#"><img alt="" src="{{ asset("img/user-8.jpg") }}" class="avatar avatar-24" height="24" width="24"/>Lisa Scholfield</a>
 											</span>
 										</span>
 									</div>
@@ -800,7 +559,7 @@
 				<div class="col-md-4 col-sm-6">
 					<div class="domestic-routes">
 						<div class="domestic-routes-thumb">
-							<a href="#"><img src="assets/img/tour-2.png" class="img-responsive" alt=""/></a>
+							<a href="#"><img src="{{ asset("img/tour-2.png") }}" class="img-responsive" alt=""/></a>
 						</div>
 						<div class="domestic-routes-detail">
 							<h5>
@@ -821,7 +580,7 @@
 				<div class="col-md-4 col-sm-6">
 					<div class="domestic-routes">
 						<div class="domestic-routes-thumb">
-							<a href="#"><img src="assets/img/tour-2.png" class="img-responsive" alt=""/></a>
+							<a href="#"><img src="{{ asset("img/tour-2.png") }}" class="img-responsive" alt=""/></a>
 						</div>
 						<div class="domestic-routes-detail">
 							<h5>
@@ -841,7 +600,7 @@
 				<div class="col-md-4 col-sm-6">
 					<div class="domestic-routes">
 						<div class="domestic-routes-thumb">
-							<a href="#"><img src="assets/img/tour-2.png" class="img-responsive" alt=""/></a>
+							<a href="#"><img src="{{ asset("img/tour-2.png") }}" class="img-responsive" alt=""/></a>
 						</div>
 						<div class="domestic-routes-detail">
 							<h5>
@@ -862,7 +621,7 @@
 				<div class="col-md-4 col-sm-6">
 					<div class="domestic-routes">
 						<div class="domestic-routes-thumb">
-							<a href="#"><img src="assets/img/tour-2.png" class="img-responsive" alt=""/></a>
+							<a href="#"><img src="{{ asset("img/tour-2.png") }}" class="img-responsive" alt=""/></a>
 						</div>
 						<div class="domestic-routes-detail">
 							<h5>
@@ -882,7 +641,7 @@
 				<div class="col-md-4 col-sm-6">
 					<div class="domestic-routes">
 						<div class="domestic-routes-thumb">
-							<a href="#"><img src="assets/img/tour-2.png" class="img-responsive" alt=""/></a>
+							<a href="#"><img src="{{ asset("img/tour-2.png") }}" class="img-responsive" alt=""/></a>
 						</div>
 						<div class="domestic-routes-detail">
 							<h5>
@@ -903,7 +662,7 @@
 				<div class="col-md-4 col-sm-6">
 					<div class="domestic-routes">
 						<div class="domestic-routes-thumb">
-							<a href="#"><img src="assets/img/tour-2.png" class="img-responsive" alt=""/></a>
+							<a href="#"><img src="{{ asset("img/tour-2.png") }}" class="img-responsive" alt=""/></a>
 						</div>
 						<div class="domestic-routes-detail">
 							<h5>
@@ -923,7 +682,7 @@
 				<div class="col-md-4 col-sm-6">
 					<div class="domestic-routes">
 						<div class="domestic-routes-thumb">
-							<a href="#"><img src="assets/img/tour-2.png" class="img-responsive" alt=""/></a>
+							<a href="#"><img src="{{ asset("img/tour-2.png") }}" class="img-responsive" alt=""/></a>
 						</div>
 						<div class="domestic-routes-detail">
 							<h5>
@@ -944,7 +703,7 @@
 				<div class="col-md-4 col-sm-6">
 					<div class="domestic-routes">
 						<div class="domestic-routes-thumb">
-							<a href="#"><img src="assets/img/tour-2.png" class="img-responsive" alt=""/></a>
+							<a href="#"><img src="{{ asset("img/tour-2.png") }}" class="img-responsive" alt=""/></a>
 						</div>
 						<div class="domestic-routes-detail">
 							<h5>
@@ -964,7 +723,7 @@
 				<div class="col-md-4 col-sm-6">
 					<div class="domestic-routes">
 						<div class="domestic-routes-thumb">
-							<a href="#"><img src="assets/img/tour-2.png" class="img-responsive" alt=""/></a>
+							<a href="#"><img src="{{ asset("img/tour-2.png") }}" class="img-responsive" alt=""/></a>
 						</div>
 						<div class="domestic-routes-detail">
 							<h5>

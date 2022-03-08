@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'front_end/base.html.twig' %}
 {% block body %}
 
 	<!DOCTYPE html>
@@ -59,7 +59,7 @@
 													<i class="fa fa-circle-o-notch" aria-hidden="true"></i>Manage Tours</a>
 											</li>
 											<li>
-												<a href="{{ path('affichguideAdmin') }}">
+												<a href="{{ path('guide_index_admin') }}">
 													<i class="fa fa-circle-o-notch" aria-hidden="true"></i>Afficher Guide</a>
 											</li>
 											<li>
@@ -80,7 +80,7 @@
 										</a>
 										<ul class="nav nav-second-level">
 											<li>
-												<a href="{{ path('ajoutguide') }}">
+												<a href="{{ path('guide_new') }}">
 													<i class="fa fa-circle-o-notch" aria-hidden="true"></i>Ajouter Guide</a>
 											</li>
 											<li>

@@ -1,0 +1,52 @@
+{% extends 'back_end/base.html.twig' %}
+{% block body %}
+    <div class="tr-single-box">
+        <div class="tr-single-header">
+            <h3 class="dashboard-title">Ajouter Guide</h3>
+        </div>
+        <div class="tr-single-body">
+            {{ form_start(form_guide) }}
+            <div class="row">
+
+                <div class="col-xs-6">
+                    <label>
+                        Nom
+                    </label>
+                    {{ form_errors(form_guide.Nom) }}
+                    {{ form_widget(form_guide.Nom,{'attr':{ 'class':'form-control','placeholder':'Veuillez saisir votre nom'}}) }}
+                </div>
+                <div class="col-xs-6">
+                    <label>Télechargez votre photo</label>
+                    <div class="cf-input">
+                        <label class="custom-file">
+                            {{ form_errors(form_guide.Photo) }}
+                            {{ form_widget(form_guide.Photo,{'attr':{ 'id':'gallery','class':'custom-file-input'}}) }}
+                            <span class="custom-file-control"></span>
+                        </label>
+
+                    </div>
+                </div>
+
+
+                <div class="col-xs-6">
+                    <label>
+                        Prénom
+                    </label>
+                    {{ form_errors(form_guide.Prenom) }}
+                    {{ form_widget(form_guide.Prenom,{'attr':{ 'class':'form-control','placeholder':'Veuillez saisir votre prénom'}}) }}
+
+                </div>
+
+                <div class="col-xs-6">
+                    <label>
+                        Description
+                    </label>
+                    {{ form_errors(form_guide.Description) }}
+                    {{ form_widget(form_guide.Description,{'attr':{ 'class':'form-control','placeholder':'Veuillez saisir votre Description'}}) }}
+                </div>
+            </div>
+            {{ form_widget(form_guide.valider,{'attr':{ 'class':'button primary'}}) }}
+            {{ form_end(form_guide) }}
+        </div>
+    </div>
+{% endblock %}

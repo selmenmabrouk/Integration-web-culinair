@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'front_end/base.html.twig' %}
 {% block body %}
 
 	<!DOCTYPE html>
@@ -11,7 +11,7 @@
 			<meta http-equiv="X-UA-Compatible" content="IE=edge">
 			<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-			<title>CULIN'AIR</title>
+			<title>Tour & Travel Bootstrap Template | Themez Hub</title>
 
 			<!-- Plugins CSS -->
 			<link
@@ -66,36 +66,53 @@
 
 										<li>
 											<a href="javascript:void(0)">
-												<i class="fa fa-clone" aria-hidden="true"></i>Affichage
+												<i class="fa fa-clone" aria-hidden="true"></i>Manage Listing
 												<span class="fa arrow"></span>
 											</a>
 											<ul class="nav nav-second-level">
 
-
 												<li>
-													<a href="{{ path('affichguideAdmin') }}">
-														<i class="fa fa-circle-o-notch" aria-hidden="true"></i>Afficher Guide</a>
+													<a href="manage-hotels.html">
+														<i class="fa fa-circle-o-notch" aria-hidden="true"></i>Manage Hotels</a>
 												</li>
 												<li>
-													<a href="{{ path('affichreservation') }}">
-														<i class="fa fa-circle-o-notch" aria-hidden="true"></i>Afficher Reservation</a>
+													<a href="manage-tours.html">
+														<i class="fa fa-circle-o-notch" aria-hidden="true"></i>Manage Tours</a>
+												</li>
+												<li>
+													<a href="manage-destinations.html">
+														<i class="fa fa-circle-o-notch" aria-hidden="true"></i>Manage Destinations</a>
+												</li>
+												<li>
+													<a href="manage-restaurants.html">
+														<i class="fa fa-circle-o-notch" aria-hidden="true"></i>Manage Restaurants</a>
 												</li>
 											</ul>
 										</li>
 
 										<li class="active">
 											<a href="javascript:void(0)">
-												<i class="ti-location-pin" aria-hidden="true"></i>Ajout
+												<i class="ti-location-pin" aria-hidden="true"></i>Add Listings
 												<span class="fa arrow"></span>
 											</a>
 											<ul class="nav nav-second-level">
 
-
 												<li>
-													<a href="{{ path('ajoutguide') }}">
-														<i class="fa fa-circle-o-notch" aria-hidden="true"></i>Ajouter Guide</a>
+													<a href="add-hotels.html">
+														<i class="fa fa-circle-o-notch" aria-hidden="true"></i>Add Hotels</a>
 												</li>
-
+												<li>
+													<a href="add-tours.html">
+														<i class="fa fa-circle-o-notch" aria-hidden="true"></i>Add Tours</a>
+												</li>
+												<li>
+													<a href="add-destinations.html">
+														<i class="fa fa-circle-o-notch" aria-hidden="true"></i>Add Destinations</a>
+												</li>
+												<li>
+													<a href="add-restaurants.html">
+														<i class="fa fa-circle-o-notch" aria-hidden="true"></i>Add Restaurants</a>
+												</li>
 											</ul>
 										</li>
 
@@ -162,57 +179,266 @@
 							<div class="row mrg-0 mrg-top-20">
 								<div class="tr-single-box">
 									<div class="tr-single-header">
-										<h3 class="dashboard-title">Modifier Guide</h3>
+										<h3 class="dashboard-title">Modifier Reservation
+										</h3>
 									</div>
 									<div class="tr-single-body">
 
-										
-											
-										 {{ form_start(form_guide) }}
+										<form
+											id="msform">
+											<!-- progressbar -->
+											<ul id="progressbar">
+												<li class="active">Basic Information</li>
+												<li>Available Amenities</li>
+												<li>Proceed Payment</li>
+											</ul>
+											<!-- fieldsets -->
+											<fieldset>
+												<div class="text-center">
+													<h2 class="fs-title">Basic Information</h2>
+													<h3 class="fs-subtitle">This is step 1</h3>
+												</div>
 												<div class="row">
-                               
+
 													<div class="col-xs-6">
-														<label>
-															Nom
-														</label>
-														 {{ form_widget(form_guide.Nom,{'attr':{ 'class':'form-control','placeholder':'Veuillez saisir votre nom'}}) }}
+														<label>Hotel Name</label>
+														<input type="text" class="form-control" placeholder="Green Valley"/>
 													</div>
 													<div class="col-xs-6">
-														<label>Télechargez votre photo</label>
+														<label>Upload Logo</label>
 														<div class="cf-input">
 															<label class="custom-file">
-                                                                  {{ form_widget(form_guide.Photo,{'attr':{ 'id':'gallery','class':'custom-file-input'}})}}
+																<input type="file" id="file" class="custom-file-input">
 																<span class="custom-file-control"></span>
 															</label>
-															
 														</div>
 													</div>
 
-
 													<div class="col-xs-6">
-														<label>
-															Prénom
-														</label>
-														 {{ form_widget(form_guide.Prenom,{'attr':{ 'class':'form-control','placeholder':'Veuillez saisir votre prénom'}}) }}
-														
+														<label>Ratting</label>
+														<div class="sl-box">
+															<select class="form-control wide">
+																<option>Hotel ratting</option>
+																<option>Normal</option>
+																<option>3 Start</option>
+																<option>4 Start</option>
+																<option>5 Start</option>
+																<option>7 Startg</option>
+															</select>
+														</div>
+													</div>
+													<div class="col-xs-6">
+														<label>Charge/Night</label>
+														<input type="text" class="form-control" placeholder="$220"/>
 													</div>
 
 													<div class="col-xs-6">
-														<label>
-															Description
-														</label>
-														 {{ form_widget(form_guide.Description,{'attr':{ 'class':'form-control','placeholder':'Veuillez saisir votre Description'}}) }}
+														<label>Phone</label>
+														<input type="text" class="form-control" placeholder="+91 254 875 8457"/>
+													</div>
+													<div class="col-xs-6">
+														<label>Landline</label>
+														<input type="text" class="form-control" placeholder="172 025 458"/>
+													</div>
 
+													<div class="col-xs-6">
+														<label>Email</label>
+														<input type="text" class="form-control" placeholder="yourht@gmail.com"/>
+													</div>
+													<div class="col-xs-6">
+														<label>Fax</label>
+														<input type="text" class="form-control" placeholder="fax"/>
+													</div>
+
+													<div class="col-xs-6">
+														<label>Address</label>
+														<input type="text" class="form-control" placeholder="#548, Near Big Market"/>
+													</div>
+													<div class="col-xs-6">
+														<label>City</label>
+														<input type="text" class="form-control" placeholder="city"/>
+													</div>
+
+													<div class="col-xs-6">
+														<label>State</label>
+														<input type="text" class="form-control" placeholder="state"/>
+													</div>
+													<div class="col-xs-6">
+														<label>Country</label>
+														<input type="text" class="form-control" placeholder="country"/>
+													</div>
+
+													<div class="col-xs-6">
+														<label>Owner Name</label>
+														<input type="text" class="form-control" placeholder="Daniel Duke"/>
+													</div>
+													<div class="col-xs-6">
+														<label>Owner Contact</label>
+														<input type="text" class="form-control" placeholder="987 584 5847"/>
+													</div>
+
+													<div class="col-xs-6">
+														<label>Featured Iamge</label>
+														<div class="cf-input">
+															<label class="custom-file">
+																<input type="file" id="featured-image" class="custom-file-input">
+																<span class="custom-file-control"></span>
+															</label>
+														</div>
+													</div>
+													<div class="col-xs-6">
+														<label>Upload Gallery</label>
+														<div class="cf-input">
+															<label class="custom-file">
+																<input type="file" id="gallery" class="custom-file-input">
+																<span class="custom-file-control"></span>
+															</label>
+														</div>
+													</div>
+
+													<div class="col-xs-12">
+														<label>Hotel Information</label>
+														<textarea class="form-control height-120" placeholder="About Hotel"></textarea>
 													</div>
 
 												</div>
 
-												{{ form_widget(form_guide.valider,{'attr':{ 'class':'button primary'}})}}</p>
+												<input type="button" name="next" class="next action-button" value="Next"/>
 
-											{{ form_end(form_guide) }}
+											</fieldset>
 
+											<fieldset>
+												<h2 class="fs-title">Available Amenities</h2>
+												<h3 class="fs-subtitle">Your presence on the social network</h3>
+												<div class="row">
+													<div class="col-md-12">
+														<ul class="add-amenities">
+															<li>
+																<span class="custom-checkbox">
+																	<input type="checkbox" id="1">
+																	<label for="1"></label>
+																</span>Satellite TV
+															</li>
+															<li>
+																<span class="custom-checkbox">
+																	<input type="checkbox" id="2">
+																	<label for="2"></label>
+																</span>Coffeemaker
+															</li>
+															<li>
+																<span class="custom-checkbox">
+																	<input type="checkbox" id="3">
+																	<label for="3"></label>
+																</span>Hair Dryer
+															</li>
+															<li>
+																<span class="custom-checkbox">
+																	<input type="checkbox" id="4">
+																	<label for="4"></label>
+																</span>Swimming Pool
+															</li>
+															<li>
+																<span class="custom-checkbox">
+																	<input type="checkbox" id="5">
+																	<label for="5"></label>
+																</span>Room Service
+															</li>
+															<li>
+																<span class="custom-checkbox">
+																	<input type="checkbox" id="6">
+																	<label for="6"></label>
+																</span>Luxury Bedding
+															</li>
+															<li>
+																<span class="custom-checkbox">
+																	<input type="checkbox" id="7">
+																	<label for="7"></label>
+																</span>Good Showers
+															</li>
+															<li>
+																<span class="custom-checkbox">
+																	<input type="checkbox" id="8">
+																	<label for="8"></label>
+																</span>Free Parking
+															</li>
+															<li>
+																<span class="custom-checkbox">
+																	<input type="checkbox" id="9">
+																	<label for="9"></label>
+																</span>Free Wifi
+															</li>
+															<li>
+																<span class="custom-checkbox">
+																	<input type="checkbox" id="0">
+																	<label for="0"></label>
+																</span>Bath towel
+															</li>
+															<li>
+																<span class="custom-checkbox">
+																	<input type="checkbox" id="11">
+																	<label for="11"></label>
+																</span>Free Coffee
+															</li>
+															<li>
+																<span class="custom-checkbox">
+																	<input type="checkbox" id="12">
+																	<label for="12"></label>
+																</span>Pets Allow
+															</li>
+															<li>
+																<span class="custom-checkbox">
+																	<input type="checkbox" id="13">
+																	<label for="13"></label>
+																</span>Hot Water
+															</li>
+															<li>
+																<span class="custom-checkbox">
+																	<input type="checkbox" id="14">
+																	<label for="14"></label>
+																</span>Attached garage
+															</li>
+															<li>
+																<span class="custom-checkbox">
+																	<input type="checkbox" id="15">
+																	<label for="15"></label>
+																</span>Elevator
+															</li>
+															<li>
+																<span class="custom-checkbox">
+																	<input type="checkbox" id="16">
+																	<label for="16"></label>
+																</span>Spa/Sauna
+															</li>
+															<li>
+																<span class="custom-checkbox">
+																	<input type="checkbox" id="17">
+																	<label for="17"></label>
+																</span>Indoor pool
+															</li>
+															<li>
+																<span class="custom-checkbox">
+																	<input type="checkbox" id="18">
+																	<label for="18"></label>
+																</span>Security cameras
+															</li>
+														</ul>
+													</div>
+												</div>
+												<input type="button" name="previous" class="previous action-button" value="Previous"/>
+												<input type="button" name="next" class="next action-button" value="Next"/>
+											</fieldset>
 
-									
+											<fieldset>
+												<div class="row">
+													<div class="col-md-12 text-center">
+														<i class="ti-thumb-up cl-success font-50"></i>
+														<h3 class="cl-success">Congratulations!</h3>
+														<p>
+															<strong>Hi Daniel</strong>, You Listing has been submitted successfully</p>
+													</div>
+												</div>
+											</fieldset>
+										</form>
 
 									</div>
 								</div>

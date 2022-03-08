@@ -1,35 +1,31 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\front_end;
 
-use Stripe\Stripe;
-use App\Entity\Guide;
-use App\Entity\Evenement;
-use App\Entity\Reservation;
-use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
-//use Stripe\BillingPortal\Session;
-use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * @Route("/payment" , name = "payment")
  */
-
 class PaymentController extends AbstractController
 {
-    #[Route('/payment', name: 'payment')]
+
+    /**
+     * @Route("/paymentpayment", name="payment")
+     */
     public function index(): Response
     {
-        return $this->render('payment/index', [
+        return $this->render('front_end/payment/index', [
             'controller_name' => 'PaymentController',
         ]);
     }
 
-    #[Route('/checkout', name: 'checkout')]
+    /**
+     * @Route("/checkout", name="checkout")
+     */
     public function checkout($stripeSK)
     {
         \Stripe\Stripe::setApiKey($stripeSK);
@@ -45,22 +41,27 @@ class PaymentController extends AbstractController
                 'quantity' => 1,
             ]],
             'mode' => 'payment',
-            'success_url' => $this->generateUrl('success_url') ,[],UrlGeneratorInterface::ABSOLUTE_URL,
-            'cancel_url' => $this->generateUrl('cancel_url') ,[],UrlGeneratorInterface::ABSOLUTE_URL,
+            'success_url' => $this->generateUrl('success_url'), [], UrlGeneratorInterface::ABSOLUTE_URL,
+            'cancel_url' => $this->generateUrl('cancel_url'), [], UrlGeneratorInterface::ABSOLUTE_URL,
         ]);
-      //  return $response->withHeader('Location', $session->url)->withStatus(303);
-        return $this->redirect($session->url,303);
+        //  return $response->withHeader('Location', $session->url)->withStatus(303);
+        return $this->redirect($session->url, 303);
     }
 
-    #[Route('/success-url', name: 'success_url')]
+    /**
+     * @Route("/success-url", name="success_url")
+     */
     public function successUrl(): Response
     {
-        return $this->render('payment/success.html.twig', []);
+        return $this->render('front_end/payment/success.html.twig', []);
     }
-    #[Route('/cancel-url', name: 'cancel_url')]
+
+    /**
+     * @Route("/cancel-url", name="cancel_url")
+     */
     public function cancelUrl(): Response
     {
-        return $this->render('payment/cancel.html.twig', []);
+        return $this->render('front_end/payment/cancel.html.twig', []);
     }
 
 
@@ -122,6 +123,6 @@ class PaymentController extends AbstractController
 
 
 
-        return $this->render('confirmation.html.twig');
+        return $this->render('front_end/confirmation.html.twig');
     }*/
 }

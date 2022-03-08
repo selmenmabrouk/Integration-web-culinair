@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'front_end/base.html.twig' %}
 
 {% block title %}Make Payment
 {% endblock %}
@@ -82,28 +82,7 @@
             <input type="submit" value="Payer {{ total_price }} DT" class="btn btn-primary mt-4">
         </form>
     </div>
-
-   
 </div>
-	<!--
-		<div class="example-wrapper">
-			<h1>Hello
-				{{ controller_name }}! ✅</h1>
-	
-			This friendly message is coming from:
-			<ul>
-				<li>Your controller at
-					<code>
-						<a href="{{ 'C:/xampp/htdocs/culin-air-main (2)/culin-air-main/culinair/src/Controller/PaymentController.php'|file_link(0) }}">src/Controller/PaymentController.php</a>
-					</code>
-				</li>
-				<li>Your template at
-					<code>
-						<a href="{{ 'C:/xampp/htdocs/culin-air-main (2)/culin-air-main/culinair/templates/payment/index.html.twig'|file_link(0) }}">templates/payment/index.html.twig</a>
-					</code>
-				</li>
-			</ul>
-		</div>-->
 {% endblock %}
 {% block javascripts %}
     <script src="/js/stripeCheckout.js"></script>
