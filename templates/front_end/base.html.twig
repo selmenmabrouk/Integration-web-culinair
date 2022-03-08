@@ -65,15 +65,18 @@
                 <ul class="nav navbar-nav navbar-right">
                     {% for role in app.user.roles %}
                         {% if role == "ROLE_ADMIN" %}
-                        <li class="br-right">
-                            <a href="{{ path("evenement_index") }}"><i
-                                        class="login-icon ti-briefcase"></i>Espace Admin</a>
-                        </li>
+                            <li class="br-right">
+                                <a href="{{ path("evenement_index") }}"><i
+                                            class="login-icon ti-briefcase"></i>Espace Admin</a>
+                            </li>
                         {% endif %}
                     {% endfor %}
                     <li class="br-right">
-                        <a href="#"><i
-                                    class="login-icon ti-user"></i>{{ app.user.email }}</a>
+                        <a href="#">
+                            <img src="{{ asset ('uploads/user/'~app.user.image) }}"
+                                 class="img-circle"
+                                 style="width: 25px; height: 25px; object-fit: contain; "/>&nbsp&nbsp&nbsp{{ app.user.email }}
+                        </a>
                     </li>
                     <li>
                         <a href="{{ path("app_logout") }}">
