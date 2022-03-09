@@ -50,11 +50,15 @@
                     <td>{{ r.Adulte }}</td>
                     <td>{{ r.Enfant }}</td>
                     <td>
-                        <div class="btn-group">
-                            <a class="btn btn-danger" href="{{ path('deletereservation',{'id':r.id}) }}">
-                                <i class="fa fa-trash"></i>
-                            </a>
-                        </div>
+                        <a href="{{ path("pdfReservation") }}"
+                           class="btn btn-success">PDF
+                        </a>
+                        <a href="{{ path("modifyResevation", {'id': r.id }) }}"
+                           class="btn btn-warning"><i class="fa fa-pencil"></i>
+                        </a>
+                        <a class="btn btn-danger" href="{{ path('deletereservation',{'id':r.id}) }}">
+                            <i class="fa fa-trash"></i>
+                        </a>
                     </td>
                 </tr>
 

@@ -1,0 +1,85 @@
+{% extends 'front_end/base.html.twig' %}
+{% block body %}
+    <!-- ======================= Start Page Title ===================== -->
+    <div class="page-title image-title" style="background-image: url({{ asset("/img/restaurant.jpg") }}">
+        <div class="container">
+            <div class="page-title-wrap">
+                <h2>Plats</h2>
+                <p>
+                    <a href="#" class="theme-cl">Culinair</a> | <span>Plats </span>
+                </p>
+            </div>
+        </div>
+    </div>
+    <a class="btn btn-primary" href="{{ path("afficherPlat") }}">Filtrer plats</a>
+    <div class="row mrg-top-25">
+        {% for p in plat %}
+            <!-- Single Restaurant -->
+            <div class="col-md-4 col-sm-6">
+
+                <article class="restaurent-box style-1">
+                    <div class="restaurent-box-image">
+                        <figure>
+                            <a href="restaurant-detail.html">
+                                <td><img src="{{ asset('uploads/plat/'~p.photo) }}" class="img-responsive
+												restaurent-box-img"/></td>
+                                <div class="list-overlay"></div>
+                                <div class="read_more"><span>Plus</span></div>
+                            </a>
+                            <a href="#" class="list-like theme-bg"><i class="ti-heart"></i></a>
+                            <h4 class="restaurent-place">
+                                <a href="#">{{ p.nom }}</a>
+                            </h4>
+                        </figure>
+                    </div>
+                    <div class="entry-meta">
+                        <div class="meta-item meta-rating">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star-half"></i>
+                        </div>
+                        <div class="meta-item meta-comment fl-right">
+                            <span class="real-price padd-l-10"> {{ p.Prix }}</span>
+                        </div>
+                    </div>
+                    <div class="restaurent-detail-box">
+                        <div class="restaurent-ellipsis">
+                            <h4 class="restaurent-name">
+                                <a href="#">{{ p.TypeCuisine }}</a>
+                            </h4>
+                            <p>
+                                {{ p.description }}
+                            </p>
+                            <a href="#">Restaurant disponible</a>
+                            <br>
+                            <p>
+                                {% for r in p.Restau %}
+
+                                    {{ r.nom }} <br>
+
+                                {% endfor %}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="restaurent-inner inner-box">
+                        <div class="box-inner-ellipsis">
+                            <div class="restaurent-review entry-location">
+                                <span class="review-status bg-warning"><i class="ti-check"></i></span>
+                                <h6>
+                                    <span class="cl-warning font-bold">Fair</span>1362 Review
+                                </h6>
+                            </div>
+                            <div class="view-box">
+                                <div class="fl-right">
+                                    <span><i class="ti-eye padd-r-5"></i>782</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

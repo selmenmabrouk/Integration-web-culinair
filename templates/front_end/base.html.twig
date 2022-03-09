@@ -57,7 +57,7 @@
                             <a href="{{ path('affichRestaurant') }}">Restaurants</a>
                         </li>
                         <li>
-                            <a href="{{ path('affichPlat') }}">Plats</a>
+                            <a href="{{ path('afficherPlatAll') }}">Plats</a>
                         </li>
                     </ul>
                 </li>
@@ -93,7 +93,7 @@
                         <a href="#">
                             <img src="{{ asset ('uploads/user/'~app.user.image) }}"
                                  class="img-circle"
-                                 style="width: 25px; height: 25px; object-fit: contain; "/>&nbsp&nbsp&nbsp{{ app.user.email }}
+                                 style="width: 25px; height: 25px; object-fit: contain; "/>&nbsp&nbsp&nbsp{{ app.user.prenom }}
                         </a>
                     </li>
                     <li>

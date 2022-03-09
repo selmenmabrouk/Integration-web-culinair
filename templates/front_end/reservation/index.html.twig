@@ -40,6 +40,10 @@
                     </th>
                     <th>
                         <i class="icon_cogs"></i>
+                        Actions
+                    </th>
+                    <th>
+                        <i class="icon_cogs"></i>
                         Paiement
                     </th>
                 </tr>
@@ -57,6 +61,7 @@
                             <td><a href="{{ path("stripe_checkout", {'idReservation': r.id }) }}"
                                    class="btn btn-primary">Payer</a></td>
                         {% endif %}
+
                     </tr>
                 {% endfor %}
                 </tbody>

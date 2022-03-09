@@ -13,7 +13,18 @@ use Symfony\Component\Routing\Annotation\Route;
 class PlatController extends AbstractController
 {
     /**
-     * @Route("/affichPlat", name="affichPlat")
+     * @Route("/afficherPlatAll", name="afficherPlatAll")
+     */
+    public function afficherPlatAll(PlatRepository $repository, Request $request): Response
+    {
+        return $this->render('front_end/plat/AfficherPlatAll.html.twig', [
+            'plat' => $repository->findAll(),
+        ]);
+
+    }
+
+    /**
+     * @Route("/afficherPlat", name="afficherPlat")
      */
     public function afficherPlat(PlatRepository $repository, Request $request): Response
     {
@@ -22,6 +33,7 @@ class PlatController extends AbstractController
         $form = $this->createForm(SearchFormType::class, $data);
         $form->handleRequest($request);
         $plat = $repository->findSearch($data);
+
         return $this->render('front_end/plat/AfficherPlat.html.twig', [
             'plat' => $plat,
             'form' => $form->createView()

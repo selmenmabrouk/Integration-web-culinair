@@ -30,6 +30,7 @@ class PlatRepository extends ServiceEntityRepository
 
     /**
      * Récupère les produits en lien avec une recherche
+     * @param SearchData $search
      * @return PaginationInterface
      */
     public function findSearch(SearchData $search): PaginationInterface

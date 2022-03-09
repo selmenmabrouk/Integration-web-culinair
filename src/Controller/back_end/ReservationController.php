@@ -3,8 +3,12 @@
 namespace App\Controller\back_end;
 
 use App\Entity\Reservation;
+use App\Form\ReservationType;
+use Dompdf\Dompdf;
+use Dompdf\Options;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Serializer\Exception\ExceptionInterface;
@@ -35,7 +39,7 @@ class ReservationController extends AbstractController
     }
 
     /**
-     * @Route("/{id}",name="Resid")
+     * @Route("/{id}/json",name="Resid")
      * @throws ExceptionInterface
      */
     public function Resid(Request $request, $id, NormalizerInterface $Normalizer): Response
@@ -97,5 +101,82 @@ class ReservationController extends AbstractController
         $em->flush();
         $jsonContent = $Normalizer->normalize($reservation, 'json', ['groups' => 'post:read']);
         return new Response(json_encode($jsonContent));
+    }
+
+
+    /**
+     * @Route("/modifyResevation/{id}", name="modifyResevation")
+     */
+    public function modifyResevation(Request $request, int $id): Response
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+
+        $Reservation = $entityManager->getRepository(Reservation::class)->find($id);
+        $form = $this->createForm(ReservationType::class, $Reservation);
+        $form->add("Modifier",SubmitType::class);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            // $file stores the uploaded PDF file
+            /** @var Symfony\Component\HttpFoundation\File\UploadedFile $file */
+            //  $file = $guide->getPhoto();
+
+
+            // updates the 'brochure' property to store the PDF file name
+            // instead of its contents
+            //$Reservation->setPhoto($fileName);
+
+            $entityManager->flush();
+            $this->addFlash('success', 'L"action a été effectué');
+            return $this->redirectToRoute("reservation_index_admin");
+        }
+
+        return $this->render('back_end/reservation/ModifierReservation.html.twig', [
+            "form_title" => "Modifier une Reservation",
+            "form_Reservation" => $form->createView(),
+        ]);
+    }
+
+
+    /**
+     * @Route("/pdfReservvation",name="pdfReservation")
+     */
+    public function pdf(): Response
+    {
+        $reservations = $this->getDoctrine()->getRepository(Reservation::class)->findAll();
+
+        // Configure Dompdf according to your needs
+        $pdfOptions = new Options();
+        $pdfOptions->set('defaultFont', 'Arial');
+
+        // Instantiate Dompdf with our options
+        $dompdf = new Dompdf($pdfOptions);
+
+        // Retrieve the HTML generated in our twig file
+        $date = date("Y/m/d");
+        $html = $this->renderView("back_end/reservation/listReservationpdf.html.twig", [
+            'reservations' => $reservations,
+            'date' => $date
+        ]);
+
+
+        // Load HTML to Dompdf
+        $dompdf->loadHtml($html);
+
+        // (Optional) Setup the paper size and orientation 'portrait' or 'portrait'
+        $dompdf->setPaper('A4');
+
+        // Render the HTML as PDF
+        $dompdf->render();
+
+        // Output the generated PDF to Browser (force download)
+        $dompdf->stream("mypdf2.pdf", [
+            "Attachment" => true
+        ]);
+        return new Response('', 200, [
+            'Content-Type' => 'application/pdf',
+        ]);
+
     }
 }
