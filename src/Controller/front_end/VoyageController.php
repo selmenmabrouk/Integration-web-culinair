@@ -4,8 +4,8 @@ namespace App\Controller\front_end;
 
 use App\Entity\Voyage;
 use App\Form\VoyageType;
-use App\Repository\VoyageRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use App\Repository\VoyageRepository;
 use Dompdf\Dompdf;
 use Dompdf\Options;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -41,7 +41,7 @@ class VoyageController extends AbstractController
 
 
         // Retrieve the HTML generated in our twig file
-        $html = $this->renderView('voyage/listV.html.twig', [
+        $html = $this->renderView('front_end/voyage/listV.html.twig', [
             'voyages' => $voyageRepository->findAll(),
         ]);
 
@@ -63,7 +63,7 @@ class VoyageController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="event_show_user", methods={"POST","GET"})
+     * @Route("/{id}/map", name="event_show_user", methods={"POST","GET"})
      */
     public function showmap(Voyage $event): Response
     {
@@ -108,7 +108,7 @@ class VoyageController extends AbstractController
     }
 
     /**
-     * @Route("/recherche", name="recherche_voyage")
+     * @Route("/recherche/voyage", name="recherche_voyage")
      */
     public function searchAction(Request $request)
     {
@@ -132,7 +132,7 @@ class VoyageController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="voyage_show", methods={"GET"})
+     * @Route("/{id}/show", name="voyage_show", methods={"GET"})
      */
     public function show(Voyage $voyage): Response
     {
@@ -173,7 +173,7 @@ class VoyageController extends AbstractController
         $dompdf = new Dompdf($pdfOptions);
 
         // Retrieve the HTML generated in our twig file
-        $html = $this->renderView('voyage/index.html.twig', [
+        $html = $this->renderView('front_end/voyage/index.html.twig', [
             'title' => "Welcome to our PDF Voyage"
         ]);
 

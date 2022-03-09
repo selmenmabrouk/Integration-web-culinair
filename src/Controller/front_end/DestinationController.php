@@ -14,6 +14,9 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use function App\Controller\dump;
 
+/**
+ * @Route("/destination")
+ */
 class DestinationController extends AbstractController
 {
 

@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <!-- Mirrored from codeminifier.com/travel-stock-demo/home-3.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 08 Feb 2022 22:31:14 GMT -->
-
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -17,8 +16,6 @@
     <link id="jssDefault" rel="stylesheet" href="{{ asset ('css/skins/default.css') }}"/>
     {% block stylesheets %}
     {% endblock %}
-
-
 </head>
 
 <body>
@@ -58,9 +55,19 @@
                 <li>
                     <a href="{{ path('affichPlat') }}">Plats</a>
                 </li>
+                <li>
+                    <a href="{{ path('voyage_index') }}">Voyage</a>
+                </li>
+                <li>
+                    <a href="{{ path('ville_index') }}">Villes</a>
+                </li>
+                <li>
+                    <a href="{{ path('pays_index') }}">Pays</a>
+                </li>
+                <li>
+                    <a href="{{ path('continent_index') }}">Continent</a>
+                </li>
             </ul>
-
-
             {% if app.user %}
                 <ul class="nav navbar-nav navbar-right">
                     {% for role in app.user.roles %}

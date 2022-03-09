@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'front_end/base.html.twig' %}
 
 {% block title %}Ville{% endblock %}
 
@@ -13,7 +13,7 @@
             </tr>
             <tr>
                 <th>NomVille</th>
-                <td>{{ ville.nomVille }}</td>
+                <td>{{ ville.ville }}</td>
             </tr>
         </tbody>
     </table>
@@ -22,5 +22,5 @@
 
     <a href="{{ path('ville_edit', {'id': ville.id}) }}">edit</a>
 
-    {{ include('ville/_delete_form.html.twig') }}
+    {{ include('front_end/ville/_delete_form.html.twig') }}
 {% endblock %}

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller\front_end;
+namespace App\Controller\back_end;
 
 use App\Entity\Continent;
 use App\Form\ContinentType;
@@ -39,7 +39,7 @@ class ContinentController extends AbstractController
             $entityManager->persist($continent);
             $entityManager->flush();
 
-            return $this->redirectToRoute('continent_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('continent_indexback', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('back_end/continent/newback.html.twig', [

@@ -16,6 +16,7 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class PaysController extends AbstractController
 {
+
     /**
      * @Route("/", name="pays_index", methods={"GET"})
      */
@@ -49,7 +50,7 @@ class PaysController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="pays_show", methods={"GET"})
+     * @Route("/{id}/show", name="pays_show", methods={"GET"})
      */
     public function show(Pays $pay): Response
     {

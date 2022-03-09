@@ -4,8 +4,8 @@ namespace App\Controller\front_end;
 
 use App\Entity\Continent;
 use App\Form\ContinentType;
-use App\Repository\ContinentRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use App\Repository\ContinentRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -49,7 +49,7 @@ class ContinentController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="continent_show", methods={"GET"})
+     * @Route("/{id}/show", name="continent_show", methods={"GET"})
      */
     public function show(Continent $continent): Response
     {

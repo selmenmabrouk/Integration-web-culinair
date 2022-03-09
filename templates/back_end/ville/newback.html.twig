@@ -1,11 +1,11 @@
-{% extends 'baseback.html.twig' %}
+{% extends 'back_end/base.html.twig' %}
 
 {% block title %}New Ville{% endblock %}
 
 {% block body %}
     <h1>Create new Ville</h1>
 
-    {{ include('ville/_form.html.twig') }}
+    {{ include('back_end/ville/_form.html.twig') }}
 
     <a href="{{ path('ville_indexback') }}">back to list</a>
 {% endblock %}

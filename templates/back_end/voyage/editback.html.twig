@@ -1,13 +1,13 @@
-{% extends 'baseback.html.twig' %}
+{% extends 'back_end/base.html.twig' %}
 
 {% block title %}Edit Voyage{% endblock %}
 
 {% block body %}
     <h1>Edit Voyage</h1>
 
-    {{ include('voyage/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('back_end/voyage/_form.html.twig', {'button_label': 'Update'}) }}
 
     <a href="{{ path('voyage_indexback') }}">back to list</a>
 
-    {{ include('voyage/_delete_form.html.twig') }}
+    {{ include('back_end/voyage/_delete_form.html.twig') }}
 {% endblock %}

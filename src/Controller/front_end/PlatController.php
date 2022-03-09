@@ -3,7 +3,7 @@
 namespace App\Controller\front_end;
 
 use App\Data\SearchData;
-use App\Form\SearchForm;
+use App\Form\SearchFormType;
 use App\Repository\PlatRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -19,7 +19,7 @@ class PlatController extends AbstractController
     {
         $data = new SearchData();
         $data->page = $request->get('page', 1);
-        $form = $this->createForm(SearchForm::class, $data);
+        $form = $this->createForm(SearchFormType::class, $data);
         $form->handleRequest($request);
         $plat = $repository->findSearch($data);
         return $this->render('front_end/plat/AfficherPlat.html.twig', [

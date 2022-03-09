@@ -1,16 +1,10 @@
 <?php
 
-namespace App\Controller\front_end;
-
-use App\Entity\Continent;
-use App\Entity\Pays;
-use App\Entity\Ville;
+namespace App\Entity;
 
 class Destination
 {
-
     private Pays $unPays;
-
     private Ville $uneVille;
     private Continent $unContinent;
 
@@ -47,6 +41,4 @@ class Destination
     {
         $this->uneVille = $ville;
     }
-
-
 }

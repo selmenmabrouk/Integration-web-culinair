@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller\front_end;
+namespace App\Controller\back_end;
 
 use App\Entity\Voyage;
 use App\Form\VoyageType;

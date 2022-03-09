@@ -1,15 +1,9 @@
 {
-    "bacon/bacon-qr-code": {
-        "version": "2.0.6"
-    },
     "cmen/google-charts-bundle": {
         "version": "5.0.0"
     },
     "composer/package-versions-deprecated": {
         "version": "1.11.99.5"
-    },
-    "dasprid/enum": {
-        "version": "1.0.3"
     },
     "doctrine/annotations": {
         "version": "1.13",
@@ -107,14 +101,17 @@
     "dompdf/dompdf": {
         "version": "v1.2.0"
     },
+    "easycorp/easyadmin-bundle": {
+        "version": "3.5",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "3.0",
+            "ref": "b131e6cbfe1b898a508987851963fff485986285"
+        }
+    },
     "egulias/email-validator": {
         "version": "3.1.2"
-    },
-    "endroid/qr-code": {
-        "version": "4.4.7"
-    },
-    "endroid/qrcode": {
-        "version": "4.4.7"
     },
     "friendsofphp/proxy-manager-lts": {
         "version": "v1.0.7"
@@ -157,18 +154,6 @@
     },
     "phenx/php-svg-lib": {
         "version": "0.4.1"
-    },
-    "phpdocumentor/reflection-common": {
-        "version": "2.2.0"
-    },
-    "phpdocumentor/reflection-docblock": {
-        "version": "5.3.0"
-    },
-    "phpdocumentor/type-resolver": {
-        "version": "1.6.0"
-    },
-    "phpstan/phpdoc-parser": {
-        "version": "1.2.0"
     },
     "psr/cache": {
         "version": "1.0.1"
@@ -217,9 +202,6 @@
     },
     "stripe/stripe-php": {
         "version": "v7.116.0"
-    },
-    "swiftmailer/swiftmailer": {
-        "version": "v6.3.0"
     },
     "symfony/amqp-messenger": {
         "version": "v5.4.5"
@@ -326,15 +308,6 @@
             "./src/Controller/.gitignore",
             "./src/Kernel.php"
         ]
-    },
-    "symfony/google-mailer": {
-        "version": "5.4",
-        "recipe": {
-            "repo": "github.com/symfony/recipes",
-            "branch": "master",
-            "version": "4.4",
-            "ref": "f8fd4ddb9b477510f8f4bce2b9c054ab428c0120"
-        }
     },
     "symfony/http-client": {
         "version": "v5.4.5"
@@ -444,6 +417,9 @@
     "symfony/polyfill-php81": {
         "version": "v1.25.0"
     },
+    "symfony/polyfill-uuid": {
+        "version": "v1.25.0"
+    },
     "symfony/process": {
         "version": "v5.4.5"
     },
@@ -511,20 +487,6 @@
     "symfony/string": {
         "version": "v5.4.3"
     },
-    "symfony/swiftmailer-bundle": {
-        "version": "3.5",
-        "recipe": {
-            "repo": "github.com/symfony/recipes",
-            "branch": "master",
-            "version": "2.5",
-            "ref": "f0b2fccdca2dfd97dc2fd5ad216d5e27c4f895ac"
-        },
-        "files": [
-            "./config/packages/dev/swiftmailer.yaml",
-            "./config/packages/swiftmailer.yaml",
-            "./config/packages/test/swiftmailer.yaml"
-        ]
-    },
     "symfony/translation": {
         "version": "5.4",
         "recipe": {
@@ -556,6 +518,9 @@
             "./config/packages/twig.yaml",
             "./templates/base.html.twig"
         ]
+    },
+    "symfony/uid": {
+        "version": "v5.4.3"
     },
     "symfony/validator": {
         "version": "5.4",
@@ -612,39 +577,17 @@
             "./config/packages/messenger.yaml"
         ]
     },
-    "symfony/webpack-encore-bundle": {
-        "version": "1.14",
-        "recipe": {
-            "repo": "github.com/symfony/recipes",
-            "branch": "master",
-            "version": "1.10",
-            "ref": "2858aeed7e1d81a45365c049eb533cc8827e380b"
-        },
-        "files": [
-            "./assets/app.js",
-            "./assets/bootstrap.js",
-            "./assets/controllers.json",
-            "./assets/controllers/hello_controller.js",
-            "./assets/styles/app.css",
-            "./config/packages/webpack_encore.yaml",
-            "./package.json",
-            "./webpack.config.js"
-        ]
-    },
     "symfony/yaml": {
         "version": "v5.4.3"
     },
     "symfonycasts/verify-email-bundle": {
-        "version": "v1.9.0"
+        "version": "v1.10.0"
     },
     "twig/extra-bundle": {
         "version": "v3.3.8"
     },
     "twig/twig": {
         "version": "v3.3.8"
-    },
-    "twilio/sdk": {
-        "version": "6.35.0"
     },
     "vonage/client": {
         "version": "2.4.0"
@@ -654,8 +597,5 @@
     },
     "vonage/nexmo-bridge": {
         "version": "0.1.1"
-    },
-    "webmozart/assert": {
-        "version": "1.10.0"
     }
 }

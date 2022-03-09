@@ -1,46 +1,9 @@
-{% extends 'baseback.html.twig' %}
+{% extends 'back_end/base.html.twig' %}
 
 {% block title %}Voyage index{% endblock %}
 
 {% block body %}
     <h1>Voyage index</h1>
-    <form role="search" id="nav-search-form" method="post" action="{{ path('recherche_voyage') }}">
-        <table>
-            <th><input style="width: fit-content" type="text" id="search" name="search" placeholder="Recherche par prix"></th>
-            <br>
-            <th><button class="btn" type="submit"> Search</button></th>
-        </table>
-
-    </form>
-    <br>
-    <table>
-        <form role="search" id="nav-search-form" method="post" action="{{ path('triprix') }}">
-
-
-            <th><div class="btn-toolbar" role="toolbar" aria-label="Programmatic control">
-                    <div class="btn-group btn-group-sm" aria-label="Set Select2 option">
-                        <button class="js-programmatic-set-val btn btn-outline-primary mr-1 mb-1">
-                            Trier par prix
-                        </button>
-                    </div>
-                </div></th>
-
-        </form>
-
-
-        <form role="search" id="nav-search-form" method="post" action="{{ path('tridatedepart') }}">
-
-
-            <th><div class="btn-toolbar" role="toolbar" aria-label="Programmatic control">
-                    <div class="btn-group btn-group-sm" aria-label="Set Select2 option">
-                        <button class="js-programmatic-set-val btn btn-outline-primary mr-1 mb-1">
-                            Trier par date de depart
-                        </button>
-                    </div>
-                </div></th>
-
-        </form>
-    </table>
 
 
 

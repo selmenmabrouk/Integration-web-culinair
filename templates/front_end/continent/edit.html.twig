@@ -1,13 +1,13 @@
-{% extends 'base.html.twig' %}
+{% extends 'front_end/base.html.twig' %}
 
 {% block title %}Edit Continent{% endblock %}
 
 {% block body %}
     <h1>Edit Continent</h1>
 
-    {{ include('continent/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('front_end/continent/_form.html.twig', {'button_label': 'Update'}) }}
 
     <a href="{{ path('continent_index') }}">back to list</a>
 
-    {{ include('continent/_delete_form.html.twig') }}
+    {{ include('front_end/continent/_delete_form.html.twig') }}
 {% endblock %}
