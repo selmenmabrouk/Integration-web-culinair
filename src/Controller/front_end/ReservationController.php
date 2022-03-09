@@ -2,6 +2,7 @@
 
 namespace App\Controller\front_end;
 
+use App\Entity\Evenement;
 use App\Entity\Reservation;
 use App\Form\ReservationType;
 use App\Repository\EvenementRepository;
@@ -12,8 +13,19 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 
-class ReserationController extends AbstractController
+class ReservationController extends AbstractController
 {
+    /**
+     * @Route("/Reservation_index" , name = "reservation_index")
+     */
+    public function index(): Response
+    {
+        return $this->render('front_end/reservation/index.html.twig', [
+            'evenements' => $event = $this->getDoctrine()->getRepository(Evenement::class)->findAll(),
+            'reservations' => $this->getDoctrine()->getRepository(Reservation::class)->findAll()
+        ]);
+    }
+
     /**
      * @Route("/Reservation_Detail/{id}" , name = "reservation_detail")
      */

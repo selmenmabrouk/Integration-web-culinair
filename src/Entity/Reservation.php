@@ -67,6 +67,16 @@ class Reservation
      */
     private $Guide;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="reservations")
+     */
+    private $user;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $paid = false;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -164,6 +174,30 @@ class Reservation
     public function setGuide(?Guide $Guide): self
     {
         $this->Guide = $Guide;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    public function getPaid(): ?bool
+    {
+        return $this->paid;
+    }
+
+    public function setPaid(bool $paid): self
+    {
+        $this->paid = $paid;
 
         return $this;
     }

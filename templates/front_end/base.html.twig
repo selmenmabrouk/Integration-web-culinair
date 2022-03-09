@@ -38,34 +38,45 @@
         <div class="collapse navbar-collapse" id="navbar-menu">
             <ul class="nav navbar-nav navbar-left" data-in="fadeInDown" data-out="fadeOutUp">
                 <li>
-                    <a href="{{ path('accueil') }}">Accueil</a>
-                </li>
-                <li>
                     <a href="{{ path('activite_front') }}">Activités</a>
                 </li>
                 <li>
                     <a href="{{ path('guide_front') }}">Guides</a>
                 </li>
                 <li>
+                    <a href="{{ path('reservation_index') }}">Reservations</a>
+                </li>
+                <li>
                     <a href="{{ path('transport_front') }}">Transport</a>
                 </li>
-                <li>
-                    <a href="{{ path('affichRestaurant') }}">Restaurants</a>
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Restaurants & Plats</a>
+                    <ul class="dropdown-menu animated fadeOutUp">
+                        <li>
+                            <a href="{{ path('affichRestaurant') }}">Restaurants</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('affichPlat') }}">Plats</a>
+                        </li>
+                    </ul>
                 </li>
-                <li>
-                    <a href="{{ path('affichPlat') }}">Plats</a>
-                </li>
-                <li>
-                    <a href="{{ path('voyage_index') }}">Voyage</a>
-                </li>
-                <li>
-                    <a href="{{ path('ville_index') }}">Villes</a>
-                </li>
-                <li>
-                    <a href="{{ path('pays_index') }}">Pays</a>
-                </li>
-                <li>
-                    <a href="{{ path('continent_index') }}">Continent</a>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Voyages</a>
+                    <ul class="dropdown-menu animated fadeOutUp">
+                        <li>
+                            <a href="{{ path('voyage_index') }}">Voyages</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('ville_index') }}">Villes</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('pays_index') }}">Pays</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('continent_index') }}">Continent</a>
+                        </li>
+                    </ul>
                 </li>
             </ul>
             {% if app.user %}

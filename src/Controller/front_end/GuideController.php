@@ -18,13 +18,8 @@ class GuideController extends AbstractController
      */
     public function AfficherGuide(): Response
     {
-        $event = $this->getDoctrine()->getRepository(Evenement::class)->findAll();
-        $guide = $this->getDoctrine()->getRepository(guide::class)->findAll();
-
         return $this->render('front_end/guide/index.html.twig', [
-            'controller_name' => 'GuideController',
-            'guide' => $guide,
-            'data' => $event
+            'guides' => $this->getDoctrine()->getRepository(guide::class)->findAll(),
         ]);
     }
 }

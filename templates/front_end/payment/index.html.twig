@@ -4,85 +4,8 @@
 {% endblock %}
 
 {% block body %}
-
-	{{ parent() }}
-
-<form action="/checkout" method="POST">
-    <button type="submit" class="btn btn-primary btn-lg">Checkout</button>
-</form>
-<!--
-	<form action="/checkout" method="POST">
-		<button type="submit" class="btn btn-primary btn-lg">
-			checkout
-		</button>
-	</form>
-    <div class="breadcrumbs">
-    <div class="container">
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb justify-content-center">
-            <li class="breadcrumb-item">Identification</li>
-            <li class="breadcrumb-item">Adresse</li>
-            <li class="breadcrumb-item">Livraison</li>
-            <li class="breadcrumb-item">Récapitulatif</li>
-            <li class="breadcrumb-item active" aria-current="page">Paiement</li>
-            </ol>
-        </nav>
-    </div>
-  </div>
-
--->
-
-<!--<style>
-        .example-wrapper {
-            margin: 1em auto;
-            max-width: 800px;
-            width: 95%;
-            font: 18px / 1.5 sans-serif;
-        }
-        .example-wrapper code {
-            background: #F5F5F5;
-            padding: 2px 6px;
-        }
-    </style>
-    -->
-    <header class="mb-4">
-        <h1>Paiement</h1>
-    </header>
-
-    <script src="https://js.stripe.com/v3/"></script>
-
-    <div class="row">
-        <div class="col-md">
-            <h4>Par carte</h4>
-            <div id="card-errors-container" class="my-2 card-errors-container">
-                <span class="badge badge-danger">Erreur</span>
-                <span id="card-errors" class="my-4"></span>
-            </div>
-            <form action="{{ path('stripe_checkout') }}" method="post" id="payment-form"
-                  data-stripe-pk="{# stripe_pk #}">
-
-                <div class="form-group">
-                    <label for="card-number">Numéro</label>
-                    <div id="card-number" class="form-control"></div>
-                </div>
-
-                <div class="form-row">
-                    <div class="col">
-                        <label for="card-expiry">Date d'expiration</label>
-                        <div id="card-expiry" class="form-control"></div>
-                    </div>
-                    <div class="col">
-                        <label for="card-cvc">Cryptogramme</label>
-                        <div id="card-cvc" class="form-control"></div>
-                    </div>
-                </div>
-
-
-                <input type="submit" value="Payer {# total_price #} DT" class="btn btn-primary mt-4">
-            </form>
-        </div>
-    </div>
+    {{ parent() }}
+    <form action="{{ path('stripe_checkout') }}" method="POST">
+        <button type="submit" class="btn btn-primary btn-lg">Checkout</button>
+    </form>
 {% endblock %}
-{% block javascripts %}
-    <script src="/js/stripeCheckout.js"></script>
-{% endblock javascripts %}

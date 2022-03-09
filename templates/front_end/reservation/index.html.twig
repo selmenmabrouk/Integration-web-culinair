@@ -1,0 +1,141 @@
+{% extends 'front_end/base.html.twig' %}
+
+{% block title %}Reservations{% endblock %}
+
+{% block body %}
+    {% if reservations|length > 0 %}
+        <section class="panel">
+            <header class="panel-heading">
+                Vos Reservations
+            </header>
+
+            <table class="table table-striped table-advance table-hover">
+                <tbody>
+                <tr>
+                    <th>
+                        <i class="icon_tag"></i>
+                        Numero de vol
+                    </th>
+                    <th>
+                        <i class="icon_pencil"></i>
+                        Destination
+                    </th>
+                    <th>
+                        <i class="icon_comment"></i>
+                        Date de depart
+                    </th>
+
+                    <th>
+                        <i class="icon_profile"></i>
+                        Date d'arrivee
+                    </th>
+
+                    <th>
+                        <i class="icon_profile"></i>
+                        Adultes
+                    </th>
+                    <th>
+                        <i class="icon_profile"></i>
+                        Enfants
+                    </th>
+                    <th>
+                        <i class="icon_cogs"></i>
+                        Paiement
+                    </th>
+                </tr>
+                {% for r in reservations %}
+                    <tr>
+                        <td>{{ r.NumVol }}</td>
+                        <td>{{ r.Destination }}</td>
+                        <td>{{ r.DateDepart | date }}</td>
+                        <td>{{ r.DateArrivee | date }}</td>
+                        <td>{{ r.Adulte }}</td>
+                        <td>{{ r.Enfant }}</td>
+                        {% if r.paid %}
+                            <td>Payé</td>
+                        {% else %}
+                            <td><a href="{{ path("stripe_checkout", {'idReservation': r.id }) }}"
+                                   class="btn btn-primary">Payer</a></td>
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </section>
+    {% else %}
+        <h2 class="centered">
+            Aucune reservation
+        </h2>
+    {% endif %}
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="heading">
+                        <h1>Nos evenements</h1>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <!-- Single Destination -->
+                {% for e in evenements %}
+                    <div class="col-md-4 col-md-6">
+                        <article class="destination-box style-1">
+                            <div class="destination-box-image">
+                                <figure>
+                                    <a href="#">
+                                        <img src="{{ asset('/uploads/') }}{{ e.image }}"
+                                             class="img-responsive listing-box-img" alt=""/>
+                                        <div class="list-overlay"></div>
+                                    </a>
+                                    <div class="discount-flick"></div>
+                                    <h4 class="destination-place">
+                                        <a href="#">{{ e.nom }}
+                                        </a>
+                                    </h4>
+                                    <a href="#" class="list-like left">
+                                        <i class="ti-heart"></i>
+                                    </a>
+                                </figure>
+                            </div>
+
+                            <div class="entry-meta">
+                                <div class="meta-item meta-rating">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star-half"></i>
+                                </div>
+                                <div class="meta-item meta-comment fl-right">
+									<span class="text-through">
+										{{ e.prix }}
+									</span>
+                                    <span class="real-pricepadd-l-10 font-bold">${{ e.prix - e.prix * e.Promotion.tauxPromotion / 100 }}</span>
+                                </div>
+                            </div>
+
+                            <div class="inner-box">
+                                <div class="box-inner-ellipsis">
+                                    <h4 class="entry-location">
+                                        <a href="#">{{ e.lieu }}</a>
+                                    </h4>
+                                    <div class="price-box">
+                                        <div class="destination-price fl-right">
+                                            <a href="{{ path('reservation_detail' , {'id' : e.id } ) }}">
+                                                Reserver
+                                                <i class="theme-cl ti-arrow-right"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endblock %}

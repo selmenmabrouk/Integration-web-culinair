@@ -41,7 +41,8 @@
         <div class="collapse navbar-collapse" id="navbar-menu">
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown dash-link"><a href="#" class="dropdown-toggle"><img
-                                src="{{ asset ('uploads/user/'~app.user.image) }}" height="30" class="img-rounded" alt=""/>Hi,
+                                src="{{ asset ('uploads/user/'~app.user.image) }}" height="30" class="img-rounded"
+                                alt=""/>Hi,
                         {{ app.user.prenom }} {{ app.user.nom }}</a>
                     <ul class="dropdown-menu left-nav">
                         <li><a href="{{ path("app_logout") }}">Log Out</a></li>
@@ -92,65 +93,93 @@
                                     Evenements
                                 </a>
                             </li>
-                            <li>
-                                <a href="{{ path('activite_index') }}">
-                                    <i class="fa fa-play" aria-hidden="true"></i>
-                                    Activités
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <i class="fa fa-play-circle" aria-hidden="true"></i>Activités & transport
                                 </a>
+                                <ul class="animated fadeIn">
+                                    <li>
+                                        <a href="{{ path('activite_index') }}">
+                                            <i class="fa fa-play" aria-hidden="true"></i>
+                                            Activités
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ path('transport_index') }}">
+                                            <i class="fa fa-car" aria-hidden="true"></i>
+                                            Transport
+                                        </a>
+                                    </li>
+                                </ul>
                             </li>
-                            <li>
-                                <a href="{{ path('transport_index') }}">
-                                    <i class="fa fa-car" aria-hidden="true"></i>
-                                    Transport
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <i class="fa fa-book" aria-hidden="true"></i>Guides & Reservations
                                 </a>
+                                <ul class="animated fadeIn">
+                                    <li>
+                                        <a href="{{ path('guide_index_admin') }}">
+                                            <i class="fa fa-book" aria-hidden="true"></i>
+                                            Guides
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ path('reservation_index_admin') }}">
+                                            <i class="fa fa-sticky-note" aria-hidden="true"></i>
+                                            Reservations
+                                        </a>
+                                    </li>
+                                </ul>
                             </li>
-                            <li>
-                                <a href="{{ path('guide_index_admin') }}">
-                                    <i class="fa fa-book" aria-hidden="true"></i>
-                                    Guides
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <i class="fa fa-building" aria-hidden="true"></i>Restaurants & Plats
                                 </a>
+                                <ul class="animated fadeIn">
+                                    <li>
+                                        <a href="{{ path('affichRestaurantAdmin') }}">
+                                            <i class="fa fa-building" aria-hidden="true"></i>
+                                            Restaurants
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ path('voyage_indexback') }}">
+                                            <i class="fa fa-circle" aria-hidden="true"></i>
+                                            Plats
+                                        </a>
+                                    </li>
+                                </ul>
                             </li>
-                            <li>
-                                <a href="{{ path('reservation_index_admin') }}">
-                                    <i class="fa fa-sticky-note" aria-hidden="true"></i>
-                                    Reservations
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <i class="fa fa-plane" aria-hidden="true"></i>Voyages
                                 </a>
-                            </li>
-                            <li>
-                                <a href="{{ path('affichRestaurantAdmin') }}">
-                                    <i class="fa fa-building" aria-hidden="true"></i>
-                                    Restaurants
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{ path('voyage_indexback') }}">
-                                    <i class="fa fa-circle" aria-hidden="true"></i>
-                                    Plats
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{ path('voyage_indexback') }}">
-                                    <i class="fa fa-plane" aria-hidden="true"></i>
-                                    Voyages
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{ path('ville_indexback') }}">
-                                    <i class="fa fa-location-arrow" aria-hidden="true"></i>
-                                    Villes
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{ path('pays_indexback') }}">
-                                    <i class="fa fa-map" aria-hidden="true"></i>
-                                    Pays
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{ path('continent_indexback') }}">
-                                    <i class="fa fa-globe" aria-hidden="true"></i>
-                                    Continents
-                                </a>
+                                <ul class="animated fadeIn">
+                                    <li>
+                                        <a href="{{ path('voyage_indexback') }}">
+                                            <i class="fa fa-plane" aria-hidden="true"></i>
+                                            Voyages
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ path('ville_indexback') }}">
+                                            <i class="fa fa-location-arrow" aria-hidden="true"></i>
+                                            Villes
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ path('pays_indexback') }}">
+                                            <i class="fa fa-map" aria-hidden="true"></i>
+                                            Pays
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ path('continent_indexback') }}">
+                                            <i class="fa fa-globe" aria-hidden="true"></i>
+                                            Continents
+                                        </a>
+                                    </li>
+                                </ul>
                             </li>
                         </ul>
                     </div>

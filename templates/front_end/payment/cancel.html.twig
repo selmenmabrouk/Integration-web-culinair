@@ -1,15 +1,11 @@
 {% extends 'front_end/base.html.twig' %}
-{% block title %}Payment Fail!
-{% endblock %}
-
+{% block title %}Payment Fail!{% endblock %}
+{% block body %}
     {{ parent () }}
-    <h1>Thanks for your attemted order!</h1>
+    <h1>Échec du paiement!</h1>
     <p>
-      We would appreciate your business!
-      But your payment failed 
-      <a href="mailto:orders@example.com">failures@example.com</a>.
+        Nous apprécions de faire affaire avec vous,
+        Mais votre paiement a échoué
     </p>
-
-    <div>
-    </div>
-    {% endblock %}
+    <a class="btn btn-primary" href="{{ path("reservation_index") }}">Afficher mes reservations</a>
+{% endblock %}

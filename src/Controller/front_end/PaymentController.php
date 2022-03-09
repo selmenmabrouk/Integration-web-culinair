@@ -2,6 +2,7 @@
 
 namespace App\Controller\front_end;
 
+use App\Entity\Reservation;
 use Stripe\Checkout\Session;
 use Stripe\Exception\ApiErrorException;
 use Stripe\Stripe;
@@ -16,48 +17,49 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class PaymentController extends AbstractController
 {
-
     /**
-     * @Route("/", name="payment")
-     */
-    public function index(): Response
-    {
-        return $this->render('front_end/payment/index.html.twig', [
-            'controller_name' => 'PaymentController',
-        ]);
-    }
-
-    /**
-     * @Route("/checkout", name="stripe_checkout")
+     * @Route("/checkout/{idReservation}", name="stripe_checkout")
      * @throws ApiErrorException
      */
-    public function checkout($stripeSK): RedirectResponse
+    public function checkout($idReservation): RedirectResponse
     {
-        Stripe::setApiKey($stripeSK);
+        Stripe::setApiKey("sk_test_51KbPYkJcDiLRLLsUptBdeVDj9thWgBMYZkqpEwH7EfkKTvjVZyBkwd0YucWIqyPnuogKpeCmxbtf2z8XaQdM7R4300qXK7UgOC");
+
         $session = Session::create([
-            'line_items' => [[
-                'price_data' => [
-                    'currency' => 'usd',
-                    'product_data' => [
-                        'name' => 'T-shirt',
+            'payment_method_types' => ['card'],
+            'line_items' => [
+                [
+                    'price_data' => [
+                        'currency' => 'usd',
+                        'product_data' => [
+                            'name' => 'Reservation',
+                        ],
+                        'unit_amount' => 2000,
                     ],
-                    'unit_amount' => 2000,
-                ],
-                'quantity' => 1,
-            ]],
+                    'quantity' => 1,
+                ]
+            ],
             'mode' => 'payment',
-            'success_url' => $this->generateUrl('success_url'), [], UrlGeneratorInterface::ABSOLUTE_URL,
-            'cancel_url' => $this->generateUrl('cancel_url'), [], UrlGeneratorInterface::ABSOLUTE_URL,
+            'success_url' => $this->generateUrl('success_url', ["idReservation" => $idReservation], UrlGeneratorInterface::ABSOLUTE_URL),
+            'cancel_url' => $this->generateUrl('cancel_url', [], UrlGeneratorInterface::ABSOLUTE_URL),
         ]);
+
         //  return $response->withHeader('Location', $session->url)->withStatus(303);
         return $this->redirect($session->url, 303);
     }
 
     /**
-     * @Route("/success-url", name="success_url")
+     * @Route("/success-url/{idReservation}", name="success_url")
      */
-    public function successUrl(): Response
+    public function successUrl($idReservation): Response
     {
+        $reservation = $this->getDoctrine()->getRepository(Reservation::class)->find($idReservation);
+
+        $reservation->setPaid(true);
+        
+        $this->getDoctrine()->getManager()->persist($reservation);
+        $this->getDoctrine()->getManager()->flush();
+
         return $this->render('front_end/payment/success.html.twig', []);
     }
 
@@ -68,66 +70,4 @@ class PaymentController extends AbstractController
     {
         return $this->render('front_end/payment/cancel.html.twig', []);
     }
-
-
-    /* private $Reservation;
-
-    private $config;
-
-    private $secretKey;
-
-    private $session;
-
-    public function __construct(EntityManagerInterface $objectManager)
-    {
-        // TODO: Load the config in a cleaner way
-        $this->config = require(__DIR__ . '/../../../config/stripe.php');
-        $this->secretKey = $this->config['secret_key'];
-        $this->session = new Session();
-    }
-
-
-    /**
-     * @Route("/checkout/stripe-checkout", name="checkout")
-     */
-    /* public function stripeCheckout(Request $req, Reservation $Reservation, Evenement $Prix)
-    {
-        if (!$this->session->get('checkout/payment')) {
-            return $this->redirectToRoute('all_Reservation');
-        }
-        
-
-        $stripe = new \Stripe\Stripe::setApiKey($this->secretKey);
-
-        $token = $req->get('stripeToken');
-
-        // Stripe expects prices in sarefff
-        $Prix = $this->$Prix * 100;
-
-        try {
-            \Stripe\Charge::create([
-                'amount' => $Prix,
-                'currency' => 'eur',
-                'source' => $token,
-            ]);
-        } catch (\Exception $e) {
-            $this->addFlash('danger', 'Paiement refusé');
-            return $this->redirectToRoute('checkout_payment');
-        } catch (\Exception $e) {
-            $this->addFlash('danger', 'Paiement impossible');
-            return $this->redirectToRoute('checkout_payment');
-        }
-
-
-        // $order = $Reservation->create($this->Reservation, $user, 'stripe');
-
-        $em = $this->getDoctrine()->getManager();
-        // $em->persist($order);
-        $em->flush();
-
-
-
-
-        return $this->render('front_end/confirmation.html.twig');
-    }*/
 }
