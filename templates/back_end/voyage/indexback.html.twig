@@ -1,0 +1,84 @@
+{% extends 'baseback.html.twig' %}
+
+{% block title %}Voyage index{% endblock %}
+
+{% block body %}
+    <h1>Voyage index</h1>
+    <form role="search" id="nav-search-form" method="post" action="{{ path('recherche_voyage') }}">
+        <table>
+            <th><input style="width: fit-content" type="text" id="search" name="search" placeholder="Recherche par prix"></th>
+            <br>
+            <th><button class="btn" type="submit"> Search</button></th>
+        </table>
+
+    </form>
+    <br>
+    <table>
+        <form role="search" id="nav-search-form" method="post" action="{{ path('triprix') }}">
+
+
+            <th><div class="btn-toolbar" role="toolbar" aria-label="Programmatic control">
+                    <div class="btn-group btn-group-sm" aria-label="Set Select2 option">
+                        <button class="js-programmatic-set-val btn btn-outline-primary mr-1 mb-1">
+                            Trier par prix
+                        </button>
+                    </div>
+                </div></th>
+
+        </form>
+
+
+        <form role="search" id="nav-search-form" method="post" action="{{ path('tridatedepart') }}">
+
+
+            <th><div class="btn-toolbar" role="toolbar" aria-label="Programmatic control">
+                    <div class="btn-group btn-group-sm" aria-label="Set Select2 option">
+                        <button class="js-programmatic-set-val btn btn-outline-primary mr-1 mb-1">
+                            Trier par date de depart
+                        </button>
+                    </div>
+                </div></th>
+
+        </form>
+    </table>
+
+
+
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>DateDepart</th>
+            <th>DateRetour</th>
+            <th>NbrVoyageurs</th>
+            <th>Prix</th>
+            <th>Ville</th>
+            <th>actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for voyage in voyages %}
+            <tr>
+                <td>{{ voyage.id }}</td>
+                <td>{{ voyage.dateDepart ? voyage.dateDepart|date('Y-m-d') : '' }}</td>
+                <td>{{ voyage.dateRetour ? voyage.dateRetour|date('Y-m-d') : '' }}</td>
+                <td>{{ voyage.nbrVoyageurs }}</td>
+                <td>{{ voyage.prix }}</td>
+                <td>{{ voyage.ville }}</td>
+                <td>
+                    <a href="{{ path('voyage_showback', {'id': voyage.id}) }}">show</a>
+                    <a href="{{ path('voyage_editback', {'id': voyage.id}) }}">edit</a>
+
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('voyage_newback') }}">Create new</a>
+{% endblock %}

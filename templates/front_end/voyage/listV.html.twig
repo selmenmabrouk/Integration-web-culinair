@@ -1,0 +1,41 @@
+{% block title %}Voyage index{% endblock %}
+
+{% block body %}
+    <h1 align = "center" >La liste des Voyages</h1>
+
+
+
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>DateDepart</th>
+            <th>DateRetour</th>
+            <th>NbrVoyageurs</th>
+            <th>Prix</th>
+            <th>Ville</th>
+            <th>actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for voyage in voyages %}
+            <tr>
+                <td>{{ voyage.id }}</td>
+                <td>{{ voyage.dateDepart ? voyage.dateDepart|date('Y-m-d') : '' }}</td>
+                <td>{{ voyage.dateRetour ? voyage.dateRetour|date('Y-m-d') : '' }}</td>
+                <td>{{ voyage.nbrVoyageurs }}</td>
+                <td>{{ voyage.prix }}</td>
+                <td>{{ voyage.ville }}</td>
+                <td>
+
+                </td>
+            </tr>
+
+
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+{% endblock %}
