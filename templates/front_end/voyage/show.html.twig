@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Voyage{% endblock %}
+
+{% block body %}
+    <h1>Voyage</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ voyage.id }}</td>
+            </tr>
+            <tr>
+                <th>DateDepart</th>
+                <td>{{ voyage.dateDepart ? voyage.dateDepart|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>DateRetour</th>
+                <td>{{ voyage.dateRetour ? voyage.dateRetour|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>NbrVoyageurs</th>
+                <td>{{ voyage.nbrVoyageurs }}</td>
+            </tr>
+            <tr>
+                <th>Prix</th>
+                <td>{{ voyage.prix }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('voyage_index') }}">back to list</a>
+
+
+
+
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}DestinationController!{% endblock %}
+
+{% form_theme form _self %}
+
+{% block body %}
+
+<div class="container mt-4">
+    <div class="row">
+        {{ form_start(form) }}
+        {{ form_widget(form) }}
+
+        <p>
+            <button class="btn btn-primary">
+                Valider
+            </button>
+        </p>
+        {{ form_end(form) }}
+    </div>
+</div>
+{% endblock body %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="testListener.js"></script>
+{% endblock %}

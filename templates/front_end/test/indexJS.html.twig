@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}DestinationController!{% endblock %}
+
+{% form_theme form _self %}
+
+{% block body %}
+
+{% set lesPays = "" %}
+{% for pays in pays %}
+    {% set lesPays = lesPays ~ pays.id ~ "***" ~ pays.nomPays ~ "***"  ~ pays.continent.id ~ "+++" %}
+{% endfor %}
+
+{% set lesVille = "" %}
+{% for ville in ville %}
+    {% set lesVille = lesVille ~ ville.id ~ "***" ~ ville.Ville ~ "***" ~ ville.pays.id ~ "+++" %}
+{% endfor %}
+
+
+<div class="container mt-5">
+    <div class="row">  
+                
+        <div class="col-sm-12" id="lesDatas" data-pays="{{ lesPays }}" data-ville="{{ lesVille }}">
+            {{ form_start(form) }}
+            {{ form_widget(form) }}
+
+            pays :
+            <select id="pays">
+            </select>
+
+            ville :
+            <select id="ville">
+            </select>
+
+            {{ form_end(form) }}
+        </div>
+
+    </div>
+</div>
+
+{% endblock body %}
+
+{% block javascripts %}
+
+
+{{ parent() }}
+
+<script src="testJs.js"></script>
+{% endblock %}
